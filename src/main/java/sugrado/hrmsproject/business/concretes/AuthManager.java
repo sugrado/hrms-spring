@@ -23,14 +23,14 @@ import sugrado.hrmsproject.entities.dtos.EmployerForRegisterDto;
 @Service
 public class AuthManager implements AuthService {
 
-    final UserService userService;
-    final CandidateService candidateService;
-    final EmployerService employerService;
-    final MernisService mernisService;
-    final VerificationByCodeService verificationByCodeService;
-    final VerificationByEmployeeService verificationByEmployeeService;
-    final ModelMapper mapper;
-    final Mail mail;
+    private UserService userService;
+    private CandidateService candidateService;
+    private EmployerService employerService;
+    private MernisService mernisService;
+    private VerificationByCodeService verificationByCodeService;
+    private VerificationByEmployeeService verificationByEmployeeService;
+    private ModelMapper mapper;
+    private Mail mail;
 
     @Autowired
     public AuthManager(UserService userService,

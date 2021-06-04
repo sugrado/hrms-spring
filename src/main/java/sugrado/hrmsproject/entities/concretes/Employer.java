@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import sugrado.hrmsproject.core.entities.User;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "employers")
@@ -32,4 +34,6 @@ public class Employer extends User {
 	@NotNull
 	private String phoneNumber;
 
+	@OneToMany(mappedBy = "employer")
+	private List<JobAdvertisement> jobAdvertisements;
 }
