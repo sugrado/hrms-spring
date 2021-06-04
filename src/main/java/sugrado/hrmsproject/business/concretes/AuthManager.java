@@ -17,8 +17,8 @@ import sugrado.hrmsproject.entities.concretes.Candidate;
 import sugrado.hrmsproject.entities.concretes.Employer;
 import sugrado.hrmsproject.entities.concretes.VerificationByCode;
 import sugrado.hrmsproject.entities.concretes.VerificationByEmployee;
-import sugrado.hrmsproject.entities.dto.CandidateForRegisterDto;
-import sugrado.hrmsproject.entities.dto.EmployerForRegisterDto;
+import sugrado.hrmsproject.entities.dtos.CandidateForRegisterDto;
+import sugrado.hrmsproject.entities.dtos.EmployerForRegisterDto;
 
 @Service
 public class AuthManager implements AuthService {
@@ -53,17 +53,8 @@ public class AuthManager implements AuthService {
 
     @Override
     public Result registerCandidate(CandidateForRegisterDto candidateForRegisterDto) {
-        if(candidateForRegisterDto.getPassword() == null ||
-            candidateForRegisterDto.getEmailAddress() == null ||
-            candidateForRegisterDto.getPasswordConfirm() == null ||
-            candidateForRegisterDto.getIdentificationNumber() == null ||
-            candidateForRegisterDto.getBirthDate() == null ||
-            candidateForRegisterDto.getFirstName() == null ||
-            candidateForRegisterDto.getLastName() == null){
-            return new ErrorResult(Messages.hasEmptyRows);
-        }
         var citizen = this.mapper.map(candidateForRegisterDto, CitizenCard.class);
-        Result result = BusinessRules.run(this.userExist(candidateForRegisterDto.getEmailAddress(),
+        var result = BusinessRules.run(this.userExist(candidateForRegisterDto.getEmailAddress(),
                                                          candidateForRegisterDto.getIdentificationNumber()),
                                           this.isPasswordMatch(candidateForRegisterDto.getPassword(),
                                                                candidateForRegisterDto.getPasswordConfirm()),
@@ -89,19 +80,10 @@ public class AuthManager implements AuthService {
 
     @Override
     public Result registerEmployer(EmployerForRegisterDto employerForRegisterDto) {
-        // TODO: E-mail - web site address compatibility will be checked
-        if(employerForRegisterDto.getPassword() == null ||
-                employerForRegisterDto.getEmailAddress() == null ||
-                employerForRegisterDto.getPasswordConfirm() == null ||
-                employerForRegisterDto.getCompanyName() == null ||
-                employerForRegisterDto.getWebAddress() == null ||
-                employerForRegisterDto.getPhoneNumber() == null){
-            return new ErrorResult(Messages.hasEmptyRows);
-        }
-
-        Result result = BusinessRules.run(this.userExist(employerForRegisterDto.getEmailAddress(),null),
+        var result = BusinessRules.run(this.userExist(employerForRegisterDto.getEmailAddress(),null),
                                           this.isPasswordMatch(employerForRegisterDto.getPassword(),
-                                                               employerForRegisterDto.getPasswordConfirm()));
+                                                               employerForRegisterDto.getPasswordConfirm()),
+                                          this.checkEmailMatch(employerForRegisterDto));
 
         if (result != null) {
             return result;
@@ -120,7 +102,7 @@ public class AuthManager implements AuthService {
         this.verificationByCodeService.add(verifyCodeEntity);
         this.verificationByEmployeeService.add(verifyEmployeeEntity);
         this.mail.sendMail(employerForRegisterDto.getEmailAddress(), code);
-        return new SuccessResult(Messages.candidateRegistered);
+        return new SuccessResult(Messages.employerRegistered);
     }
 
     @Override
@@ -144,5 +126,11 @@ public class AuthManager implements AuthService {
         if (res)
             return new SuccessResult();
         return new ErrorResult(Messages.notFoundCitizen);
+    }
+
+    public Result checkEmailMatch(EmployerForRegisterDto employerForRegisterDto) {
+        var mailDomain = employerForRegisterDto.getEmailAddress().split("@")[1];
+        return mailDomain.equals(employerForRegisterDto.getWebAddress()) ? new SuccessResult() :
+                new ErrorResult("E-mail domain and web address does not match.");
     }
 }

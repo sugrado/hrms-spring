@@ -1,8 +1,8 @@
 package sugrado.hrmsproject.business.abstracts;
 
 import sugrado.hrmsproject.core.utilities.results.Result;
-import sugrado.hrmsproject.entities.dto.CandidateForRegisterDto;
-import sugrado.hrmsproject.entities.dto.EmployerForRegisterDto;
+import sugrado.hrmsproject.entities.dtos.CandidateForRegisterDto;
+import sugrado.hrmsproject.entities.dtos.EmployerForRegisterDto;
 
 public interface AuthService {
 	Result registerCandidate(CandidateForRegisterDto candidateForRegisterDto);

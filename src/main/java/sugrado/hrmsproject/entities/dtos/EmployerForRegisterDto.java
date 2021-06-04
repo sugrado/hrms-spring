@@ -1,4 +1,4 @@
-package sugrado.hrmsproject.entities.dto;
+package sugrado.hrmsproject.entities.dtos;
 
 import lombok.Data;
 

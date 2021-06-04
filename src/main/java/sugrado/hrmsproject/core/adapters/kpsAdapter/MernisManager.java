@@ -3,7 +3,6 @@ package sugrado.hrmsproject.core.adapters.kpsAdapter;
 import mernisService.QNQKPSPublicSoap;
 import org.springframework.stereotype.Service;
 import sugrado.hrmsproject.core.adapters.kpsAdapter.dto.CitizenCard;
-import sugrado.hrmsproject.entities.dto.CandidateForRegisterDto;
 
 @Service
 public class MernisManager implements MernisService {

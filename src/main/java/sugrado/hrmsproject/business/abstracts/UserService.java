@@ -4,7 +4,7 @@ import java.util.List;
 
 import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
-import sugrado.hrmsproject.entities.concretes.User;
+import sugrado.hrmsproject.core.entities.User;
 
 public interface UserService {
     DataResult<List<User>> getAll();

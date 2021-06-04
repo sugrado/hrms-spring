@@ -11,8 +11,8 @@ import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
 import sugrado.hrmsproject.core.utilities.results.SuccessDataResult;
 import sugrado.hrmsproject.core.utilities.results.SuccessResult;
-import sugrado.hrmsproject.dataAccess.abstracts.UserDao;
-import sugrado.hrmsproject.entities.concretes.User;
+import sugrado.hrmsproject.core.dataAccess.UserDao;
+import sugrado.hrmsproject.core.entities.User;
 
 @Service
 public class UserManager implements UserService {

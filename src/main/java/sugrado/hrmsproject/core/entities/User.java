@@ -1,7 +1,9 @@
-package sugrado.hrmsproject.entities.concretes;
+package sugrado.hrmsproject.core.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,8 +22,13 @@ public class User {
 	private int id;
 
 	@Column(name = "email_address")
+	@Email
+	@NotBlank
+	@NotNull
 	private String emailAddress;
 
+	@NotBlank
+	@NotNull
 	@Column(name = "password")
 	private String password;
 

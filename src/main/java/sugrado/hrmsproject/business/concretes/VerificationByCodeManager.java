@@ -8,12 +8,9 @@ import org.springframework.stereotype.Service;
 
 import sugrado.hrmsproject.business.abstracts.VerificationByCodeService;
 import sugrado.hrmsproject.business.constants.Messages;
-import sugrado.hrmsproject.core.utilities.results.DataResult;
-import sugrado.hrmsproject.core.utilities.results.Result;
-import sugrado.hrmsproject.core.utilities.results.SuccessDataResult;
-import sugrado.hrmsproject.core.utilities.results.SuccessResult;
+import sugrado.hrmsproject.core.utilities.business.BusinessRules;
+import sugrado.hrmsproject.core.utilities.results.*;
 import sugrado.hrmsproject.dataAccess.abstracts.VerificationByCodeDao;
-import sugrado.hrmsproject.entities.concretes.User;
 import sugrado.hrmsproject.entities.concretes.VerificationByCode;
 
 @Service
@@ -34,7 +31,8 @@ public class VerificationByCodeManager implements VerificationByCodeService {
 
     @Override
     public DataResult<VerificationByCode> getById(int verificationByCodeId) {
-        return new SuccessDataResult<VerificationByCode>(this.verificationByCodeDao.findById(verificationByCodeId).get(), Messages.listed);
+        return new SuccessDataResult<VerificationByCode>
+                (this.verificationByCodeDao.findById(verificationByCodeId).get(), Messages.listed);
     }
 
     @Override
@@ -45,12 +43,17 @@ public class VerificationByCodeManager implements VerificationByCodeService {
 
     @Override
     public Result update(VerificationByCode verificationByCode) {
-        var codeEntity = this.getByUserId(verificationByCode.getUserId()).getData();
-        codeEntity.setStatus(true);
-        codeEntity.setVerifiedDate(LocalDateTime.now());
-        this.verificationByCodeDao.save(codeEntity);
+        var codeForValidate = this.getByUserId(verificationByCode.getUserId()).getData();
+
+        var result = BusinessRules.run(
+                this.checkVerificationCode(codeForValidate.getCode(), verificationByCode.getCode()));
+        if(result != null)
+            return result;
+
+        codeForValidate.setStatus(true);
+        codeForValidate.setVerifiedDate(LocalDateTime.now());
+        this.verificationByCodeDao.save(codeForValidate);
         return new SuccessResult(Messages.userVerified);
-        // TODO: Kullanıcıdan kod girilerek aktifleştirme işlemi yapılacak.
     }
 
     @Override
@@ -61,6 +64,13 @@ public class VerificationByCodeManager implements VerificationByCodeService {
 
     @Override
     public DataResult<VerificationByCode> getByUserId(int userId) {
-        return new SuccessDataResult<VerificationByCode>(this.verificationByCodeDao.getByUserId(userId), Messages.listed);
+        return new SuccessDataResult<VerificationByCode>
+                (this.verificationByCodeDao.getByUserId(userId), Messages.listed);
+    }
+
+    private Result checkVerificationCode(String trueCode, String inComingCode){
+        if(inComingCode.equals(trueCode))
+            return new SuccessResult();
+        return new ErrorResult("Verification code does not match.");
     }
 }

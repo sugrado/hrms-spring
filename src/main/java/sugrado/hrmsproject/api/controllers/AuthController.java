@@ -8,8 +8,8 @@ import sugrado.hrmsproject.business.abstracts.AuthService;
 import sugrado.hrmsproject.core.utilities.results.ErrorResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
 import sugrado.hrmsproject.core.utilities.results.SuccessResult;
-import sugrado.hrmsproject.entities.dto.CandidateForRegisterDto;
-import sugrado.hrmsproject.entities.dto.EmployerForRegisterDto;
+import sugrado.hrmsproject.entities.dtos.CandidateForRegisterDto;
+import sugrado.hrmsproject.entities.dtos.EmployerForRegisterDto;
 
 @RestController
 @RequestMapping("/api/auth")

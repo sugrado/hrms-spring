@@ -17,5 +17,6 @@ public class Messages {
     public static String checkMailBox = ". Please check your mailbox.";
     public static String userVerified = "User successfully verified.";
 
-    public static String employerNotRegistered = "Employer successfully registered.";
+    public static String employerNotRegistered = "Employer registration failed.";
+    public static String employerRegistered = "Successfully registered. Please check your e-mail box. Enter the verification code sent to your e-mail to complete the registration.";
 }

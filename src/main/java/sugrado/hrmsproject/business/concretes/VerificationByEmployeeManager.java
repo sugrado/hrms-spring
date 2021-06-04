@@ -51,8 +51,7 @@ public class VerificationByEmployeeManager implements VerificationByEmployeeServ
 		vEmployeeEntity.setStatus(true);
 		vEmployeeEntity.setVerifiedDate(LocalDateTime.now());
 		vEmployeeEntity.setEmployeeId(employeeId);
-		this.verificationByEmployeeDao.save(vEmployeeEntity);
-		// TODO: Personel doğrulama yapınca veritabanına 1 tane daha ekleniyor düzeltilecek
+		this.verificationByEmployeeDao.saveAndFlush(vEmployeeEntity);
 		return new SuccessResult(Messages.updated);
 	}
 
