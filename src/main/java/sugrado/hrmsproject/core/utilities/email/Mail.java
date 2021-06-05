@@ -1,12 +1,8 @@
 package sugrado.hrmsproject.core.utilities.email;
 
 import org.springframework.stereotype.Service;
-import sugrado.hrmsproject.business.abstracts.VerificationByCodeService;
+import sugrado.hrmsproject.business.abstracts.verifications.VerificationByCodeService;
 import sugrado.hrmsproject.business.constants.Messages;
-import sugrado.hrmsproject.dataAccess.abstracts.VerificationByCodeDao;
-import sugrado.hrmsproject.entities.concretes.VerificationByCode;
-
-import java.util.Random;
 
 @Service
 public class Mail {
