@@ -2,6 +2,7 @@ package sugrado.hrmsproject.business.abstracts.candidates;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
 import sugrado.hrmsproject.entities.concretes.candidates.Candidate;

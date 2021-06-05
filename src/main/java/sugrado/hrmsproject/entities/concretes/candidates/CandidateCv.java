@@ -36,6 +36,10 @@ public class CandidateCv {
     @Column(name = "abilities")
     private String abilities;
 
+    @JsonIgnore
+    @OneToOne(mappedBy = "candidate")
+    private CandidateImage candidateImage;
+
     @OneToMany(mappedBy = "candidateCV")
     @JsonIgnore
     private List<CandidateJobExperience> candidateJobExperiences;
