@@ -18,7 +18,9 @@ public interface JobAdvertisementService {
 
     DataResult<JobAdvertisement> getById(int id);
 
-    DataResult<List<JobAdvertisement>> getAllByEmployer(int employerId);
+    DataResult<List<JobAdvertisement>> getAllByStatusIsTrueAndEmployerId(int employerId);
 
-    DataResult<List<JobAdvertisement>> getAllByApplicationDeadline(LocalDate applicationDeadline);
+    DataResult<List<JobAdvertisement>> getAllByDateSorted();
+
+    DataResult<List<JobAdvertisement>> getAllByStatusIsTrue();
 }

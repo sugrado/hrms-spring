@@ -1,6 +1,8 @@
 package sugrado.hrmsproject.business.concretes;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sugrado.hrmsproject.business.abstracts.JobAdvertisementService;
 import sugrado.hrmsproject.business.constants.Messages;
@@ -11,17 +13,18 @@ import sugrado.hrmsproject.core.utilities.results.SuccessResult;
 import sugrado.hrmsproject.dataAccess.abstracts.JobAdvertisementDao;
 import sugrado.hrmsproject.entities.concretes.JobAdvertisement;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService {
 
     private JobAdvertisementDao jobAdvertisementDao;
+    private ModelMapper mapper;
 
     @Autowired
-    public JobAdvertisementManager(JobAdvertisementDao jobAdvertisementDao) {
+    public JobAdvertisementManager(JobAdvertisementDao jobAdvertisementDao, ModelMapper mapper) {
         this.jobAdvertisementDao = jobAdvertisementDao;
+        this.mapper = mapper;
     }
 
     @Override
@@ -51,18 +54,25 @@ public class JobAdvertisementManager implements JobAdvertisementService {
     @Override
     public DataResult<JobAdvertisement> getById(int id) {
         return new SuccessDataResult<JobAdvertisement>
-                (this.jobAdvertisementDao.getAllById(id),Messages.listed);
+                (this.jobAdvertisementDao.getAllById(id), Messages.listed);
     }
 
     @Override
-    public DataResult<List<JobAdvertisement>> getAllByEmployer(int employerId) {
+    public DataResult<List<JobAdvertisement>> getAllByStatusIsTrueAndEmployerId(int employerId) {
         return new SuccessDataResult<List<JobAdvertisement>>
-                (this.jobAdvertisementDao.getAllByEmployer(employerId), Messages.listed);
+                (this.jobAdvertisementDao.getAllByStatusIsTrueAndEmployerId(employerId), Messages.listed);
     }
 
     @Override
-    public DataResult<List<JobAdvertisement>> getAllByApplicationDeadline(LocalDate applicationDeadline) {
+    public DataResult<List<JobAdvertisement>> getAllByDateSorted() {
+        Sort sortedList = Sort.by(Sort.Direction.ASC, "releaseDate");
         return new SuccessDataResult<List<JobAdvertisement>>
-                (this.jobAdvertisementDao.getAllByApplicationDeadline(applicationDeadline), Messages.listed);
+                (this.jobAdvertisementDao.findAll(sortedList), Messages.listed);
+    }
+
+    @Override
+    public DataResult<List<JobAdvertisement>> getAllByStatusIsTrue() {
+        return new SuccessDataResult<List<JobAdvertisement>>
+                (this.jobAdvertisementDao.getAllByStatusIsTrue(), Messages.listed);
     }
 }

@@ -7,7 +7,6 @@ import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
 import sugrado.hrmsproject.entities.concretes.JobAdvertisement;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -16,7 +15,7 @@ public class JobAdvertisementsController {
     private JobAdvertisementService jobAdvertisementService;
 
     @Autowired
-    public JobAdvertisementsController(JobAdvertisementService jobAdvertisementService){
+    public JobAdvertisementsController(JobAdvertisementService jobAdvertisementService) {
         this.jobAdvertisementService = jobAdvertisementService;
     }
 
@@ -25,14 +24,19 @@ public class JobAdvertisementsController {
         return this.jobAdvertisementService.getAll();
     }
 
-    @GetMapping("/get-all-by-employer")
-    public DataResult<List<JobAdvertisement>> getAllByEmployer(int id) {
-        return this.jobAdvertisementService.getAllByEmployer(id);
+    @GetMapping("/get-by-employer")
+    public DataResult<List<JobAdvertisement>> getAllByStatusIsTrueAndEmployerId(@RequestParam int employerId) {
+        return this.jobAdvertisementService.getAllByStatusIsTrueAndEmployerId(employerId);
     }
 
-    @GetMapping("/get-all-by-date")
-    public DataResult<List<JobAdvertisement>> getAllByApplicationDeadline(LocalDate date) {
-        return this.jobAdvertisementService.getAllByApplicationDeadline(date);
+    @GetMapping("/get-active-adverts")
+    public DataResult<List<JobAdvertisement>> getAllByStatusIsTrue() {
+        return this.jobAdvertisementService.getAllByStatusIsTrue();
+    }
+
+    @GetMapping("/get-by-date-sort")
+    public DataResult<List<JobAdvertisement>> getAllByDateSorted() {
+        return this.jobAdvertisementService.getAllByDateSorted();
     }
 
     @GetMapping("/getbyid")
@@ -47,6 +51,7 @@ public class JobAdvertisementsController {
 
     @PostMapping("/update")
     public Result update(@RequestBody JobAdvertisement jobAdvertisement) {
+        // TODO: Employer can set status to false
         return this.jobAdvertisementService.update(jobAdvertisement);
     }
 

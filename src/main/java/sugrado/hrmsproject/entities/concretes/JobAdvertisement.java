@@ -33,6 +33,9 @@ public class JobAdvertisement {
     @Column(name = "status")
     private boolean status;
 
+    @Column(name = "release_date")
+    private LocalDate releaseDate;
+
     @Column(name = "application_deadline")
     private LocalDate applicationDeadline;
 
