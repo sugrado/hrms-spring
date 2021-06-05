@@ -16,4 +16,6 @@ public interface CandidateCvService {
     DataResult<List<CandidateCv>> getAll();
 
     DataResult<CandidateCv> getById(int id);
+
+    DataResult<CandidateCv> getByCandidateId(int candidateId);
 }

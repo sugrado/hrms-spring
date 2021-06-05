@@ -27,6 +27,11 @@ public class CandidateCvsController {
         return this.candidateCvService.getById(id);
     }
 
+    @GetMapping("/getbycandidateid")
+    public Result getByCandidateId(@RequestParam int id) {
+        return this.candidateCvService.getByCandidateId(id);
+    }
+
     @PostMapping("/add")
     public Result add(@RequestBody CandidateCv candidateCV) {
         return this.candidateCvService.add(candidateCV);

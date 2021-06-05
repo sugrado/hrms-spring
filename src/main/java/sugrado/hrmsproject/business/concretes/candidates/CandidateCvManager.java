@@ -49,4 +49,9 @@ public class CandidateCvManager implements CandidateCvService {
     public DataResult<CandidateCv> getById(int id) {
         return new SuccessDataResult<CandidateCv>(this.candidateCVDao.findById(id).get(), Messages.listed);
     }
+
+    @Override
+    public DataResult<CandidateCv> getByCandidateId(int candidateId) {
+        return new SuccessDataResult<CandidateCv>(this.candidateCVDao.getByCandidateId(candidateId), Messages.listed);
+    }
 }

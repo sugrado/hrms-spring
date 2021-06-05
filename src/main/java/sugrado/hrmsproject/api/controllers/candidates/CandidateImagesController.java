@@ -20,7 +20,7 @@ public class CandidateImagesController {
     }
 
     @GetMapping("/getall")
-    public Result getall() {
+    public Result getAll() {
         return this.candidateImageService.getAll();
     }
 
