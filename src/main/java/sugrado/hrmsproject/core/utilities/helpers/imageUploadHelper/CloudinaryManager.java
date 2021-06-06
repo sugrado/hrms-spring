@@ -19,7 +19,7 @@ public class CloudinaryManager implements CloudinaryService {
     public CloudinaryManager(Cloudinary cloudinary) {
         this.cloudinary = cloudinary;
     }
-
+    // TODO: Adapters klasörüne taşınacak.
     public Result uploadImage(MultipartFile file) {
         try {
             var uploadResult = cloudinary.uploader().upload(file, ObjectUtils.emptyMap());

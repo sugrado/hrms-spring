@@ -1,6 +1,7 @@
 package sugrado.hrmsproject.entities.concretes.types;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "languages")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "candidateLanguages"})
 public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +30,5 @@ public class Language {
     private String name;
 
     @OneToMany(mappedBy = "language")
-    @JsonIgnore()
     private List<CandidateLanguage> candidateLanguages;
 }

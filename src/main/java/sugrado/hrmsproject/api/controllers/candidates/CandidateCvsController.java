@@ -33,17 +33,17 @@ public class CandidateCvsController {
     }
 
     @PostMapping("/add")
-    public Result add(@RequestBody CandidateCv candidateCV) {
-        return this.candidateCvService.add(candidateCV);
+    public Result add(@RequestBody CandidateCv candidateCv) {
+        return this.candidateCvService.add(candidateCv);
     }
 
     @PostMapping("/update")
-    public Result update(@RequestBody CandidateCv candidateCV) {
-        return this.candidateCvService.update(candidateCV);
+    public Result update(@RequestBody CandidateCv candidateCv) {
+        return this.candidateCvService.update(candidateCv);
     }
 
     @PostMapping("/delete")
-    public Result delete(@RequestBody CandidateCv candidateCV) {
-        return this.candidateCvService.delete(candidateCV);
+    public Result delete(@RequestBody CandidateCv candidateCv) {
+        return this.candidateCvService.delete(candidateCv);
     }
 }

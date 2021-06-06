@@ -15,43 +15,43 @@ import java.util.List;
 
 @Service
 public class CandidateCvManager implements CandidateCvService {
-    private CandidateCvDao candidateCVDao;
+    private CandidateCvDao candidateCvDao;
 
     @Autowired
-    public CandidateCvManager(CandidateCvDao candidateCVDao) {
-        this.candidateCVDao = candidateCVDao;
+    public CandidateCvManager(CandidateCvDao candidateCvDao) {
+        this.candidateCvDao = candidateCvDao;
     }
 
     @Override
     public Result add(CandidateCv candidateCv) {
-        this.candidateCVDao.save(candidateCv);
+        this.candidateCvDao.save(candidateCv);
         return new SuccessResult(Messages.added);
     }
 
     @Override
     public Result update(CandidateCv candidateCv) {
-        this.candidateCVDao.save(candidateCv);
+        this.candidateCvDao.save(candidateCv);
         return new SuccessResult(Messages.updated);
     }
 
     @Override
     public Result delete(CandidateCv candidateCv) {
-        this.candidateCVDao.delete(candidateCv);
+        this.candidateCvDao.delete(candidateCv);
         return new SuccessResult(Messages.deleted);
     }
 
     @Override
     public DataResult<List<CandidateCv>> getAll() {
-        return new SuccessDataResult<List<CandidateCv>>(this.candidateCVDao.findAll(), Messages.listed);
+        return new SuccessDataResult<List<CandidateCv>>(this.candidateCvDao.findAll(), Messages.listed);
     }
 
     @Override
     public DataResult<CandidateCv> getById(int id) {
-        return new SuccessDataResult<CandidateCv>(this.candidateCVDao.findById(id).get(), Messages.listed);
+        return new SuccessDataResult<CandidateCv>(this.candidateCvDao.findById(id).get(), Messages.listed);
     }
 
     @Override
     public DataResult<CandidateCv> getByCandidateId(int candidateId) {
-        return new SuccessDataResult<CandidateCv>(this.candidateCVDao.getByCandidateId(candidateId), Messages.listed);
+        return new SuccessDataResult<CandidateCv>(this.candidateCvDao.getByCandidateId(candidateId), Messages.listed);
     }
 }

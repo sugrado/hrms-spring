@@ -1,6 +1,7 @@
 package sugrado.hrmsproject.entities.concretes.candidates;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "candidate_job_experiences")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "candidateCv"})
 public class CandidateJobExperience {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,12 +42,6 @@ public class CandidateJobExperience {
     private LocalDate departureDate;
 
     @ManyToOne()
-    @JsonIgnore()
-    @JoinColumn(name = "candidate_id")
-    private Candidate candidate;
-
-    @ManyToOne()
-    @JsonIgnore
-    @JoinColumn(name = "candidateCV_id")
-    private CandidateCv candidateCV;
+    @JoinColumn(name = "candidate_cv_id")
+    private CandidateCv candidateCv;
 }

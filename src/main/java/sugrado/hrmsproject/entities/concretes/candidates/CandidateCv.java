@@ -1,12 +1,12 @@
 package sugrado.hrmsproject.entities.concretes.candidates;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -20,8 +20,8 @@ public class CandidateCv {
     @Column(name="id")
     private int id;
 
-    @ManyToOne()
-    @JoinColumn(name = "candidate_id")
+    @OneToOne
+    @JoinColumn(name="candidate_id")
     private Candidate candidate;
 
     @Column(name = "github_profile")
@@ -36,19 +36,15 @@ public class CandidateCv {
     @Column(name = "abilities")
     private String abilities;
 
-    @JsonIgnore
     @OneToOne(mappedBy = "candidate")
     private CandidateImage candidateImage;
 
-    @OneToMany(mappedBy = "candidateCV")
-    @JsonIgnore
+    @OneToMany(mappedBy = "candidateCv")
     private List<CandidateJobExperience> candidateJobExperiences;
 
-    @OneToMany(mappedBy = "candidateCV")
-    @JsonIgnore
+    @OneToMany(mappedBy = "candidateCv")
     private List<CandidateEducation> candidateEducations;
 
-    @OneToMany(mappedBy = "candidateCV")
-    @JsonIgnore
+    @OneToMany(mappedBy = "candidateCv")
     private List<CandidateLanguage> candidateLanguages;
 }
