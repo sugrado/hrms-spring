@@ -1,10 +1,8 @@
 package sugrado.hrmsproject.api.controllers.candidates;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import sugrado.hrmsproject.business.abstracts.candidates.CandidateCvService;
 import sugrado.hrmsproject.business.abstracts.candidates.CandidateImageService;
 import sugrado.hrmsproject.core.utilities.results.Result;
@@ -17,6 +15,11 @@ public class CandidateImagesController {
     @Autowired
     private CandidateImagesController(CandidateImageService candidateImageService){
         this.candidateImageService = candidateImageService;
+    }
+
+    @PostMapping("/add")
+    public Result add(int candidateId, MultipartFile file) {
+        return this.candidateImageService.add(candidateId, file);
     }
 
     @GetMapping("/getall")

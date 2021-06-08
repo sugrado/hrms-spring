@@ -8,11 +8,7 @@ import sugrado.hrmsproject.entities.concretes.candidates.CandidateImage;
 import java.util.List;
 
 public interface CandidateImageService {
-    Result add(CandidateImage candidateImage, MultipartFile file);
-
-    Result update(CandidateImage candidateImage);
-
-    Result delete(int id);
+    Result add(int candidateId, MultipartFile file);
 
     DataResult<CandidateImage> getById(int id);
 

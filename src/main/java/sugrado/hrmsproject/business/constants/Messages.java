@@ -7,6 +7,7 @@ public class Messages {
     public static String updated = "Updated.";
     public static String userExist = "User already exist.";
     public static String userNotExist = "User does not exist.";
+    public static String notFound="Entity not found.";
 
     public static String candidateRegistered = "Candidate successfully registered.";
     public static String candidateNotRegistered = "Candidate not registered.";

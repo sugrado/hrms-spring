@@ -1,6 +1,7 @@
 package sugrado.hrmsproject.entities.concretes.candidates;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,12 @@ public class CandidateImage {
     private String imagePath;
 
     @OneToOne()
-    @JsonIgnore
     @JoinColumn(name = "candidate_id")
+    @JsonIgnoreProperties({"password"})
     private Candidate candidate;
+
+    public CandidateImage(String imagePath, Candidate candidate) {
+        this.imagePath = imagePath;
+        this.candidate = candidate;
+    }
 }
