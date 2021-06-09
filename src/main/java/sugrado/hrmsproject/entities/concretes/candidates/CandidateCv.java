@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="candidate_cvs")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidateEducations","candidateJobExperiences", "candidateLanguages"})
 public class CandidateCv {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,12 +40,12 @@ public class CandidateCv {
     @OneToOne(mappedBy = "candidate")
     private CandidateImage candidateImage;
 
-    @OneToMany(mappedBy = "candidateCv")
+    @OneToMany(mappedBy = "candidateCv", cascade = CascadeType.ALL)
     private List<CandidateJobExperience> candidateJobExperiences;
 
-    @OneToMany(mappedBy = "candidateCv")
+    @OneToMany(mappedBy = "candidateCv", cascade = CascadeType.ALL)
     private List<CandidateEducation> candidateEducations;
 
-    @OneToMany(mappedBy = "candidateCv")
+    @OneToMany(mappedBy = "candidateCv", cascade = CascadeType.ALL)
     private List<CandidateLanguage> candidateLanguages;
 }

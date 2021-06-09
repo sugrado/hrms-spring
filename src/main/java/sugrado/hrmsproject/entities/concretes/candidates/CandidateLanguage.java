@@ -16,7 +16,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Entity
 @Table(name = "candidate_languages")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "candidateCv"})
 public class CandidateLanguage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +31,7 @@ public class CandidateLanguage {
     @JoinColumn(name = "language_id")
     private Language language;
 
-    @ManyToOne()
     @JoinColumn(name = "candidate_cv_id")
+    @ManyToOne(targetEntity = CandidateCv.class)
     private CandidateCv candidateCv;
 }

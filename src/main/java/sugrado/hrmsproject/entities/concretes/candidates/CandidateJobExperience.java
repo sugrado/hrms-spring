@@ -16,7 +16,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "candidate_job_experiences")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "candidateCv"})
 public class CandidateJobExperience {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +40,7 @@ public class CandidateJobExperience {
     @Column(name = "departure_date")
     private LocalDate departureDate;
 
-    @ManyToOne()
     @JoinColumn(name = "candidate_cv_id")
+    @ManyToOne(targetEntity = CandidateCv.class)
     private CandidateCv candidateCv;
 }
