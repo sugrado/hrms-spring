@@ -20,7 +20,7 @@ public class CandidateCvPreviewDto {
     @JsonIgnoreProperties({"candidate", "githubProfile","linkedinProfile","content", "abilities"})
     private CandidateCv candidateCv;
 
-    @JsonIgnoreProperties({"candidateCv", "password"})
+    @JsonIgnoreProperties({"candidateCv", "password", "identificationNumber"})
     private Candidate candidate;
 
     @JsonIgnoreProperties({"candidateCv"})
