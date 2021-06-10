@@ -14,5 +14,5 @@ public interface CandidateImageService {
 
     DataResult<List<CandidateImage>> getAll();
 
-    DataResult<CandidateImage> getByCandidateId(int id);
+    DataResult<CandidateImage> getByCandidateCvId(int id);
 }

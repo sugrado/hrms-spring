@@ -2,7 +2,7 @@ package sugrado.hrmsproject.business.concretes.candidates;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sugrado.hrmsproject.business.abstracts.candidates.CandidateCvService;
+import sugrado.hrmsproject.business.abstracts.candidates.*;
 import sugrado.hrmsproject.business.constants.Messages;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
@@ -10,16 +10,32 @@ import sugrado.hrmsproject.core.utilities.results.SuccessDataResult;
 import sugrado.hrmsproject.core.utilities.results.SuccessResult;
 import sugrado.hrmsproject.dataAccess.abstracts.candidates.CandidateCvDao;
 import sugrado.hrmsproject.entities.concretes.candidates.CandidateCv;
+import sugrado.hrmsproject.entities.dtos.CandidateCvPreviewDto;
 
 import java.util.List;
 
 @Service
 public class CandidateCvManager implements CandidateCvService {
     private CandidateCvDao candidateCvDao;
+    private CandidateService candidateService;
+    private CandidateImageService candidateImageService;
+    private CandidateEducationService candidateEducationService;
+    private CandidateJobExperienceService candidateJobExperienceService;
+    private CandidateLanguageService candidateLanguageService;
 
     @Autowired
-    public CandidateCvManager(CandidateCvDao candidateCvDao) {
+    public CandidateCvManager(CandidateCvDao candidateCvDao,
+                              CandidateService candidateService,
+                              CandidateImageService candidateImageService,
+                              CandidateEducationService candidateEducationService,
+                              CandidateJobExperienceService candidateJobExperienceService,
+                              CandidateLanguageService candidateLanguageService) {
         this.candidateCvDao = candidateCvDao;
+        this.candidateService = candidateService;
+        this.candidateEducationService = candidateEducationService;
+        this.candidateImageService = candidateImageService;
+        this.candidateJobExperienceService = candidateJobExperienceService;
+        this.candidateLanguageService = candidateLanguageService;
     }
 
     @Override
@@ -53,5 +69,26 @@ public class CandidateCvManager implements CandidateCvService {
     @Override
     public DataResult<CandidateCv> getByCandidateId(int candidateId) {
         return new SuccessDataResult<CandidateCv>(this.candidateCvDao.getByCandidateId(candidateId), Messages.listed);
+    }
+
+    @Override
+    public DataResult<CandidateCvPreviewDto> getDetailsByCandidateId(int candidateId) {
+        var cv = this.candidateCvDao.getByCandidateId(candidateId);
+        var candidate = this.candidateService.getById(candidateId).getData();
+        var educations = this.candidateEducationService.getAllByCandidateCvId(cv.getId()).getData();
+        var image = this.candidateImageService.getByCandidateCvId(cv.getId()).getData();
+        var languages = this.candidateLanguageService.getAllByCandidateCvId(cv.getId()).getData();
+        var experiences = this.candidateJobExperienceService.getAllByCandidateCvId(cv.getId()).getData();
+        var candidateCvPreviewDto = new CandidateCvPreviewDto(cv.getGithubProfile(),
+                cv.getLinkedinProfile(),
+                cv.getContent(),
+                cv.getAbilities(),
+                cv,
+                candidate,
+                image,
+                educations,
+                languages,
+                experiences);
+        return new SuccessDataResult<CandidateCvPreviewDto>(candidateCvPreviewDto, Messages.listed);
     }
 }

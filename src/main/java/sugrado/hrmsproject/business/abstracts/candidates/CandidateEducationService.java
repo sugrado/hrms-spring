@@ -16,4 +16,6 @@ public interface CandidateEducationService {
     DataResult<List<CandidateEducation>> getAll();
 
     DataResult<CandidateEducation> getById(int id);
+
+    DataResult<List<CandidateEducation>> getAllByCandidateCvId(int candidateCvId);
 }

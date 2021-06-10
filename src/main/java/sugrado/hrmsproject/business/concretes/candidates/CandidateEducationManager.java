@@ -49,4 +49,10 @@ public class CandidateEducationManager implements CandidateEducationService {
     public DataResult<CandidateEducation> getById(int id) {
         return new SuccessDataResult<CandidateEducation>(this.candidateEducationDao.findById(id).get(), Messages.listed);
     }
+
+    @Override
+    public DataResult<List<CandidateEducation>> getAllByCandidateCvId(int candidateCvId) {
+        return new SuccessDataResult<List<CandidateEducation>>
+                (this.candidateEducationDao.getAllByCandidateCvId(candidateCvId), Messages.listed);
+    }
 }

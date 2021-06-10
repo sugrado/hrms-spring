@@ -32,8 +32,8 @@ public class CandidateImagesController {
         return this.candidateImageService.getById(id);
     }
 
-    @GetMapping("/getbycandidateid")
-    public Result getByCandidateId(@RequestParam int id) {
-        return this.candidateImageService.getByCandidateId(id);
+    @GetMapping("/getbycandidatecvid")
+    public Result getByCandidateCvId(@RequestParam int id) {
+        return this.candidateImageService.getByCandidateCvId(id);
     }
 }

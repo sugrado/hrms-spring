@@ -23,12 +23,11 @@ public class CandidateImage {
     private String imagePath;
 
     @OneToOne()
-    @JoinColumn(name = "candidate_id")
-    @JsonIgnoreProperties({"password"})
-    private Candidate candidate;
+    @JoinColumn(name = "candidate_cv_id")
+    private CandidateCv candidateCv;
 
-    public CandidateImage(String imagePath, Candidate candidate) {
+    public CandidateImage(String imagePath, CandidateCv candidateCv) {
         this.imagePath = imagePath;
-        this.candidate = candidate;
+        this.candidateCv = candidateCv;
     }
 }

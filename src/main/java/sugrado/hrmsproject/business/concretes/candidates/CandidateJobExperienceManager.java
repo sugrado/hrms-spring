@@ -51,4 +51,10 @@ public class CandidateJobExperienceManager implements CandidateJobExperienceServ
         return new SuccessDataResult<CandidateJobExperience>
                 (this.candidateJobExperienceDao.findById(id).get(), Messages.listed);
     }
+
+    @Override
+    public DataResult<List<CandidateJobExperience>> getAllByCandidateCvId(int candidateCvId) {
+        return new SuccessDataResult<List<CandidateJobExperience>>
+                (this.candidateJobExperienceDao.getAllByCandidateCvId(candidateCvId), Messages.listed);
+    }
 }

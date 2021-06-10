@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.entities.concretes.candidates;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="candidate_cvs")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidateEducations","candidateJobExperiences", "candidateLanguages"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidateEducations","candidateJobExperiences", "candidateLanguages", "candidateImage"})
 public class CandidateCv {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +22,7 @@ public class CandidateCv {
 
     @OneToOne
     @JoinColumn(name="candidate_id")
+    @JsonIgnoreProperties({"password", "identificationNumber"})
     private Candidate candidate;
 
     @Column(name = "github_profile")
@@ -37,7 +37,7 @@ public class CandidateCv {
     @Column(name = "abilities")
     private String abilities;
 
-    @OneToOne(mappedBy = "candidate")
+    @OneToOne(mappedBy = "candidateCv", cascade = CascadeType.ALL)
     private CandidateImage candidateImage;
 
     @OneToMany(mappedBy = "candidateCv", cascade = CascadeType.ALL)

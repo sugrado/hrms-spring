@@ -1,7 +1,10 @@
 package sugrado.hrmsproject.business.concretes.candidates;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import sugrado.hrmsproject.business.abstracts.candidates.CandidateCvService;
 import sugrado.hrmsproject.business.abstracts.candidates.CandidateImageService;
 import sugrado.hrmsproject.business.abstracts.candidates.CandidateService;
 import sugrado.hrmsproject.business.constants.Messages;
@@ -15,27 +18,28 @@ import java.util.Map;
 
 @Service
 public class CandidateImageManager implements CandidateImageService {
-    private CandidateService candidateService;
+    private CandidateCvService candidateCvService;
     private CandidateImageDao candidateImageDao;
     private CloudinaryService cloudinaryService;
 
-    public CandidateImageManager(CandidateService candidateService,
+    @Autowired
+    public CandidateImageManager(@Lazy CandidateCvService candidateCvService,
                                  CandidateImageDao candidateImageDao,
                                  CloudinaryService cloudinaryService) {
-        this.candidateService = candidateService;
+        this.candidateCvService = candidateCvService;
         this.candidateImageDao = candidateImageDao;
         this.cloudinaryService = cloudinaryService;
     }
 
     @Override
     public Result add(int candidateId, MultipartFile file) {
-        var candidate = this.candidateService.getById(candidateId);
+        var candidateCv = this.candidateCvService.getByCandidateId(candidateId);
 
-        if (candidate.getData() == null)
+        if (candidateCv.getData() == null)
             return new ErrorResult(Messages.notFound);
 
         Map<String, String> result = this.cloudinaryService.uploadImage(file).getData();
-        var candidateImg = new CandidateImage(result.get("url"), candidate.getData());
+        var candidateImg = new CandidateImage(result.get("url"), candidateCv.getData());
         this.candidateImageDao.save(candidateImg);
         return new SuccessResult(Messages.added);
     }
@@ -51,7 +55,7 @@ public class CandidateImageManager implements CandidateImageService {
     }
 
     @Override
-    public DataResult<CandidateImage> getByCandidateId(int id) {
-        return new SuccessDataResult<CandidateImage>(this.candidateImageDao.getByCandidateId(id), Messages.listed);
+    public DataResult<CandidateImage> getByCandidateCvId(int id) {
+        return new SuccessDataResult<CandidateImage>(this.candidateImageDao.getByCandidateCvId(id), Messages.listed);
     }
 }
