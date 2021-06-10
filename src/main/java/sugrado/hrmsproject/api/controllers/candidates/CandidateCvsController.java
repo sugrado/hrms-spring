@@ -8,6 +8,7 @@ import sugrado.hrmsproject.entities.concretes.candidates.CandidateCv;
 
 @RestController
 @RequestMapping("/api/candidatecvs")
+@CrossOrigin
 public class CandidateCvsController {
     private CandidateCvService candidateCvService;
 

@@ -3,12 +3,12 @@ package sugrado.hrmsproject.api.controllers.candidates;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import sugrado.hrmsproject.business.abstracts.candidates.CandidateCvService;
 import sugrado.hrmsproject.business.abstracts.candidates.CandidateImageService;
 import sugrado.hrmsproject.core.utilities.results.Result;
 
 @RestController
 @RequestMapping("/api/candidateImages")
+@CrossOrigin
 public class CandidateImagesController {
     private CandidateImageService candidateImageService;
 

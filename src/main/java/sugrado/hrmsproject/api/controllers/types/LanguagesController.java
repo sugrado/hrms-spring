@@ -8,6 +8,7 @@ import sugrado.hrmsproject.entities.concretes.types.Language;
 
 @RestController
 @RequestMapping("/api/languages")
+@CrossOrigin
 public class LanguagesController {
     private LanguageService languageService;
 

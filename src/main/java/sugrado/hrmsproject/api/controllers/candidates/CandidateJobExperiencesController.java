@@ -8,6 +8,7 @@ import sugrado.hrmsproject.entities.concretes.candidates.CandidateJobExperience;
 
 @RestController
 @RequestMapping("/api/candidatejobexperiences")
+@CrossOrigin
 public class CandidateJobExperiencesController {
     private CandidateJobExperienceService candidateJobExperienceService;
 
