@@ -1,4 +1,4 @@
-package sugrado.hrmsproject.core.adapters.kpsAdapter.dto;
+package sugrado.hrmsproject.business.adapters.kpsAdapter.dto;
 
 import lombok.Data;
 

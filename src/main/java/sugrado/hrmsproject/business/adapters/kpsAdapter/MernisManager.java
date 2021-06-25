@@ -1,8 +1,8 @@
-package sugrado.hrmsproject.core.adapters.kpsAdapter;
+package sugrado.hrmsproject.business.adapters.kpsAdapter;
 
 import mernisService.QNQKPSPublicSoap;
 import org.springframework.stereotype.Service;
-import sugrado.hrmsproject.core.adapters.kpsAdapter.dto.CitizenCard;
+import sugrado.hrmsproject.business.adapters.kpsAdapter.dto.CitizenCard;
 
 @Service
 public class MernisManager implements MernisService {

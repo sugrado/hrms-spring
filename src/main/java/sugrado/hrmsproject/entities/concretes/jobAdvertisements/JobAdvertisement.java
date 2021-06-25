@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import sugrado.hrmsproject.entities.concretes.people.Employer;
 import sugrado.hrmsproject.entities.concretes.types.City;
+import sugrado.hrmsproject.entities.concretes.types.EmploymentType;
 import sugrado.hrmsproject.entities.concretes.types.JobPosition;
+import sugrado.hrmsproject.entities.concretes.verifications.VerificationByEmployee;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -36,6 +38,9 @@ public class JobAdvertisement {
     @Column(name = "status")
     private boolean status;
 
+    @Column(name = "remote")
+    private boolean remote;
+
     @Column(name = "release_date")
     private LocalDate releaseDate;
 
@@ -49,6 +54,10 @@ public class JobAdvertisement {
     @ManyToOne()
     @JoinColumn(name = "job_position_id")
     private JobPosition jobPosition;
+
+    @ManyToOne()
+    @JoinColumn(name = "employment_type_id")
+    private EmploymentType employmentType;
 
     @ManyToOne()
     @JoinColumn(name = "employer_id")

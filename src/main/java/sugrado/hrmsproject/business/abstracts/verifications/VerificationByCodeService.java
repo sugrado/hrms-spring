@@ -13,7 +13,7 @@ public interface VerificationByCodeService {
 
 	Result add(VerificationByCode verificationByCode);
 
-	Result update(VerificationByCode verificationByCode);
+	Result approve(VerificationByCode verificationByCode);
 
 	Result delete(VerificationByCode verificationByCode);
 

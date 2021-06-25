@@ -1,4 +1,4 @@
-package sugrado.hrmsproject.core.adapters.cloudinaryAdapter;
+package sugrado.hrmsproject.business.adapters.cloudinaryAdapter;
 
 import org.springframework.web.multipart.MultipartFile;
 import sugrado.hrmsproject.core.utilities.results.DataResult;

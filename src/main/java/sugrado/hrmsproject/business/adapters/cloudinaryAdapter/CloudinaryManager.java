@@ -1,4 +1,4 @@
-package sugrado.hrmsproject.core.adapters.cloudinaryAdapter;
+package sugrado.hrmsproject.business.adapters.cloudinaryAdapter;
 
 import com.cloudinary.*;
 import com.cloudinary.utils.ObjectUtils;

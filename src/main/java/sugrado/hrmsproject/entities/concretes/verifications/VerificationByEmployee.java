@@ -2,20 +2,27 @@ package sugrado.hrmsproject.entities.concretes.verifications;
 
 import javax.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import sugrado.hrmsproject.entities.concretes.jobAdvertisements.JobAdvertisement;
+import sugrado.hrmsproject.entities.concretes.types.VerificationTypeEnum;
+
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "verifications_by_employee")
 @PrimaryKeyJoinColumn(name = "id")
-@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor
 public class VerificationByEmployee extends Verification {
 
-	@Column(name = "employer_id")
-	private int employerId;
+	@Column(name = "entity_id")
+	@NonNull
+	private int entityId;
+
+	@Column(name = "verification_type")
+	@NonNull
+	private VerificationTypeEnum verificationTypeEnum;
 
 	@Column(name = "employee_id")
 	private Integer employeeId;

@@ -22,4 +22,6 @@ public interface JobAdvertisementService {
     DataResult<List<JobAdvertisement>> getAllByDateSorted();
 
     DataResult<List<JobAdvertisement>> getAllByStatusIsTrue();
+
+    DataResult<List<JobAdvertisement>> getApprovedAdvertisements();
 }

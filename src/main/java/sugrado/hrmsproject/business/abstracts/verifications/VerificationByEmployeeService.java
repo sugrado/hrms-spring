@@ -11,11 +11,11 @@ public interface VerificationByEmployeeService {
 
 	DataResult<VerificationByEmployee> getById(int verificationByEmployeeId);
 
-	DataResult<VerificationByEmployee> getByEmployerId(int employerId);
+	DataResult<VerificationByEmployee> getByEntityId(int entityId);
 
 	Result add(VerificationByEmployee verificationByEmployee);
 
-	Result update(VerificationByEmployee verificationByEmployee, int employeeId);
+	Result approve(VerificationByEmployee verificationByEmployee);
 
 	Result delete(VerificationByEmployee verificationByEmployee);
 }

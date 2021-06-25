@@ -1,10 +1,10 @@
 package sugrado.hrmsproject.business.concretes.jobAdvertisements;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sugrado.hrmsproject.business.abstracts.jobAdvertisements.JobAdvertisementService;
+import sugrado.hrmsproject.business.abstracts.verifications.VerificationByEmployeeService;
 import sugrado.hrmsproject.business.constants.Messages;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
@@ -12,24 +12,30 @@ import sugrado.hrmsproject.core.utilities.results.SuccessDataResult;
 import sugrado.hrmsproject.core.utilities.results.SuccessResult;
 import sugrado.hrmsproject.dataAccess.abstracts.jobAdvertisements.JobAdvertisementDao;
 import sugrado.hrmsproject.entities.concretes.jobAdvertisements.JobAdvertisement;
+import sugrado.hrmsproject.entities.concretes.types.VerificationTypeEnum;
+import sugrado.hrmsproject.entities.concretes.verifications.VerificationByEmployee;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService {
 
     private JobAdvertisementDao jobAdvertisementDao;
-    private ModelMapper mapper;
+    private VerificationByEmployeeService verificationByEmployeeService;
 
     @Autowired
-    public JobAdvertisementManager(JobAdvertisementDao jobAdvertisementDao, ModelMapper mapper) {
+    public JobAdvertisementManager(JobAdvertisementDao jobAdvertisementDao, VerificationByEmployeeService verificationByEmployeeService) {
         this.jobAdvertisementDao = jobAdvertisementDao;
-        this.mapper = mapper;
+        this.verificationByEmployeeService = verificationByEmployeeService;
     }
 
     @Override
     public Result add(JobAdvertisement jobAdvertisement) {
         this.jobAdvertisementDao.save(jobAdvertisement);
+        var verificationByEmployee =
+                new VerificationByEmployee(jobAdvertisement.getId(), VerificationTypeEnum.JobAdvertisement);
+        this.verificationByEmployeeService.add(verificationByEmployee);
         return new SuccessResult(Messages.added);
     }
 
@@ -74,5 +80,20 @@ public class JobAdvertisementManager implements JobAdvertisementService {
     public DataResult<List<JobAdvertisement>> getAllByStatusIsTrue() {
         return new SuccessDataResult<List<JobAdvertisement>>
                 (this.jobAdvertisementDao.getAllByStatusIsTrue(), Messages.listed);
+    }
+
+    @Override
+    public DataResult<List<JobAdvertisement>> getApprovedAdvertisements() {
+        // TODO: Will be refactored. This is a workaround.
+        var jobAdvertisements = this.jobAdvertisementDao.findAll();
+        List<JobAdvertisement> approvedAdvertisements = new ArrayList<JobAdvertisement>();
+
+        for (JobAdvertisement jobAdvertisement : jobAdvertisements) {
+            var check = this.verificationByEmployeeService.getByEntityId(jobAdvertisement.getId()).getData();
+            if (check.isStatus() == true) {
+                approvedAdvertisements.add(jobAdvertisement);
+            }
+        }
+        return new SuccessDataResult<List<JobAdvertisement>>(approvedAdvertisements, Messages.listed);
     }
 }

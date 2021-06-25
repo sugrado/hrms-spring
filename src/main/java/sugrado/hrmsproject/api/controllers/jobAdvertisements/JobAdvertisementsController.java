@@ -25,6 +25,11 @@ public class JobAdvertisementsController {
         return this.jobAdvertisementService.getAll();
     }
 
+    @GetMapping("/get-approved")
+    public DataResult<List<JobAdvertisement>> getApprovedAdvertisements() {
+        return this.jobAdvertisementService.getApprovedAdvertisements();
+    }
+
     @GetMapping("/get-by-employer")
     public DataResult<List<JobAdvertisement>> getAllByStatusIsTrueAndEmployerId(@RequestParam int employerId) {
         return this.jobAdvertisementService.getAllByStatusIsTrueAndEmployerId(employerId);
@@ -50,7 +55,7 @@ public class JobAdvertisementsController {
         return this.jobAdvertisementService.add(jobAdvertisement);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result update(@RequestBody JobAdvertisement jobAdvertisement) {
         // TODO: Employer can set status to false
         return this.jobAdvertisementService.update(jobAdvertisement);

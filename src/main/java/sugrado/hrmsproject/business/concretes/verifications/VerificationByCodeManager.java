@@ -42,7 +42,7 @@ public class VerificationByCodeManager implements VerificationByCodeService {
     }
 
     @Override
-    public Result update(VerificationByCode verificationByCode) {
+    public Result approve(VerificationByCode verificationByCode) {
         var codeForValidate = this.getByUserId(verificationByCode.getUserId()).getData();
 
         var result = BusinessRules.run(

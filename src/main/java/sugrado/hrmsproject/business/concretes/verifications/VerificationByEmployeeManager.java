@@ -45,11 +45,11 @@ public class VerificationByEmployeeManager implements VerificationByEmployeeServ
 	}
 
 	@Override
-	public Result update(VerificationByEmployee verificationByEmployee, int employeeId) {
-		var vEmployeeEntity = this.getByEmployerId(verificationByEmployee.getEmployerId()).getData();
+	public Result approve(VerificationByEmployee verificationByEmployee) {
+		var vEmployeeEntity = this.getByEntityId(verificationByEmployee.getEntityId()).getData();
 		vEmployeeEntity.setStatus(true);
 		vEmployeeEntity.setVerifiedDate(LocalDateTime.now());
-		vEmployeeEntity.setEmployeeId(employeeId);
+		vEmployeeEntity.setEmployeeId(verificationByEmployee.getEmployeeId());
 		this.verificationByEmployeeDao.saveAndFlush(vEmployeeEntity);
 		return new SuccessResult(Messages.updated);
 	}
@@ -61,7 +61,7 @@ public class VerificationByEmployeeManager implements VerificationByEmployeeServ
 	}
 
 	@Override
-	public DataResult<VerificationByEmployee> getByEmployerId(int employerId) {
-		return new SuccessDataResult<VerificationByEmployee>(this.verificationByEmployeeDao.getByEmployerId(employerId), Messages.listed);
+	public DataResult<VerificationByEmployee> getByEntityId(int entityId) {
+		return new SuccessDataResult<VerificationByEmployee>(this.verificationByEmployeeDao.getByEntityId(entityId), Messages.listed);
 	}
 }

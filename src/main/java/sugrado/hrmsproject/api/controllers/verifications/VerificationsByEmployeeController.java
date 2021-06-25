@@ -14,7 +14,7 @@ import sugrado.hrmsproject.entities.concretes.verifications.VerificationByEmploy
 @RequestMapping("/api/verificationsbyemployee")
 @CrossOrigin
 public class VerificationsByEmployeeController {
-    private final VerificationByEmployeeService verificationByEmployeeService;
+    private VerificationByEmployeeService verificationByEmployeeService;
 
     @Autowired
     public VerificationsByEmployeeController(VerificationByEmployeeService verificationByEmployeeService) {
@@ -22,28 +22,8 @@ public class VerificationsByEmployeeController {
         this.verificationByEmployeeService = verificationByEmployeeService;
     }
 
-    @GetMapping("/getall")
-    public DataResult<List<VerificationByEmployee>> getAll() {
-        return verificationByEmployeeService.getAll();
-    }
-
-    @GetMapping("/getbyid")
-    public DataResult<VerificationByEmployee> getById(@RequestBody int id) {
-        return verificationByEmployeeService.getById(id);
-    }
-
-    @PostMapping("/add")
-    public Result add(@RequestBody VerificationByEmployee verificationByEmployee) {
-        return this.verificationByEmployeeService.add(verificationByEmployee);
-    }
-
-    @PostMapping("/update")
-    public Result update(@RequestBody VerificationByEmployee verificationByEmployee, int employeeId) {
-        return this.verificationByEmployeeService.update(verificationByEmployee, employeeId);
-    }
-
-    @PostMapping("/delete")
-    public Result delete(@RequestBody VerificationByEmployee verificationByEmployee) {
-        return this.verificationByEmployeeService.delete(verificationByEmployee);
+    @PostMapping("/approve")
+    public Result approve(@RequestBody VerificationByEmployee verificationByEmployee) {
+        return this.verificationByEmployeeService.approve(verificationByEmployee);
     }
 }
