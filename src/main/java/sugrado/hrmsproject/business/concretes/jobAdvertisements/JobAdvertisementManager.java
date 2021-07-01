@@ -90,10 +90,40 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
         for (JobAdvertisement jobAdvertisement : jobAdvertisements) {
             var check = this.verificationByEmployeeService.getByEntityId(jobAdvertisement.getId()).getData();
-            if (check.isStatus() == true) {
+            if (check.isStatus()) {
                 approvedAdvertisements.add(jobAdvertisement);
             }
         }
         return new SuccessDataResult<List<JobAdvertisement>>(approvedAdvertisements, Messages.listed);
+    }
+
+    @Override
+    public DataResult<List<JobAdvertisement>> getAdvertisementRequests() {
+        // TODO: Will be refactored. This is a workaround.
+        var jobAdvertisements = this.jobAdvertisementDao.findAll();
+        List<JobAdvertisement> approvedAdvertisements = new ArrayList<JobAdvertisement>();
+
+        for (JobAdvertisement jobAdvertisement : jobAdvertisements) {
+            var check = this.verificationByEmployeeService.getByEntityId(jobAdvertisement.getId()).getData();
+            if (!check.isStatus()) {
+                approvedAdvertisements.add(jobAdvertisement);
+            }
+        }
+        return new SuccessDataResult<List<JobAdvertisement>>(approvedAdvertisements, Messages.listed);
+    }
+
+    @Override
+    public Result approveAdvert(int id) {
+        var verification = this.verificationByEmployeeService.getByEntityId(id).getData();
+        this.verificationByEmployeeService.approve(verification);
+        return new SuccessResult();
+    }
+
+    @Override
+    public Result cancelAdvert(int id) {
+        var verification = this.verificationByEmployeeService.getByEntityId(id).getData();
+        var advert = this.jobAdvertisementDao.getAllById(id);
+        this.jobAdvertisementDao.delete(advert);
+        return new SuccessResult();
     }
 }

@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.multipart.MultipartFile;
 import sugrado.hrmsproject.business.abstracts.authorizations.UserService;
+import sugrado.hrmsproject.business.abstracts.types.ImageService;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
 import sugrado.hrmsproject.core.entities.User;
@@ -15,11 +17,12 @@ import sugrado.hrmsproject.core.entities.User;
 @CrossOrigin
 public class UsersController {
 	private UserService userService;
+	private ImageService imageService;
 
 	@Autowired
-	public UsersController(UserService userService) {
-		super();
+	public UsersController(UserService userService, ImageService imageService) {
 		this.userService = userService;
+		this.imageService = imageService;
 	}
 
 	@GetMapping("/getall")
@@ -40,5 +43,10 @@ public class UsersController {
 	@PostMapping("/delete")
 	public Result delete(@RequestBody User user) {
 		return this.userService.delete(user);
+	}
+
+	@PostMapping("/upload-image")
+	public Result uploadImage(int userId, MultipartFile file) {
+		return this.imageService.add(userId, file);
 	}
 }

@@ -27,6 +27,9 @@ public class User {
 	@NotNull
 	private String emailAddress;
 
+	@Column(name = "photo")
+	private String photo;
+
 	@NotBlank
 	@NotNull
 	@Column(name = "password")

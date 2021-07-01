@@ -30,6 +30,21 @@ public class JobAdvertisementsController {
         return this.jobAdvertisementService.getApprovedAdvertisements();
     }
 
+    @GetMapping("/get-requests")
+    public DataResult<List<JobAdvertisement>> getAdvertisementRequests() {
+        return this.jobAdvertisementService.getAdvertisementRequests();
+    }
+
+    @GetMapping("/approve")
+    public Result approveAdvert(int id) {
+        return this.jobAdvertisementService.approveAdvert(id);
+    }
+
+    @GetMapping("/cancel")
+    public Result cancel(int id) {
+        return this.jobAdvertisementService.cancelAdvert(id);
+    }
+
     @GetMapping("/get-by-employer")
     public DataResult<List<JobAdvertisement>> getAllByStatusIsTrueAndEmployerId(@RequestParam int employerId) {
         return this.jobAdvertisementService.getAllByStatusIsTrueAndEmployerId(employerId);

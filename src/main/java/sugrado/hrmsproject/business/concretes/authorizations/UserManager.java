@@ -43,7 +43,7 @@ public class UserManager implements UserService {
 
     @Override
     public Result update(User user) {
-        this.userDao.save(user);
+        this.userDao.saveAndFlush(user);
         return new SuccessResult(Messages.updated);
     }
 

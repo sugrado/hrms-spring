@@ -3,10 +3,7 @@ package sugrado.hrmsproject.entities.concretes.verifications;
 import javax.persistence.*;
 
 import lombok.*;
-import sugrado.hrmsproject.entities.concretes.jobAdvertisements.JobAdvertisement;
 import sugrado.hrmsproject.entities.concretes.types.VerificationTypeEnum;
-
-import java.util.List;
 
 @Data
 @Entity
@@ -22,7 +19,7 @@ public class VerificationByEmployee extends Verification {
 
 	@Column(name = "verification_type")
 	@NonNull
-	private VerificationTypeEnum verificationTypeEnum;
+	private VerificationTypeEnum verificationType;
 
 	@Column(name = "employee_id")
 	private Integer employeeId;

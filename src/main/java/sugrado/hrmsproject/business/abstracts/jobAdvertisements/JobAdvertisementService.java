@@ -24,4 +24,10 @@ public interface JobAdvertisementService {
     DataResult<List<JobAdvertisement>> getAllByStatusIsTrue();
 
     DataResult<List<JobAdvertisement>> getApprovedAdvertisements();
+
+    DataResult<List<JobAdvertisement>> getAdvertisementRequests();
+
+    Result approveAdvert(int id);
+
+    Result cancelAdvert(int id);
 }
