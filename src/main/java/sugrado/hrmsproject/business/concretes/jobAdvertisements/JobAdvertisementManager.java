@@ -15,6 +15,7 @@ import sugrado.hrmsproject.entities.concretes.jobAdvertisements.JobAdvertisement
 import sugrado.hrmsproject.entities.concretes.types.VerificationTypeEnum;
 import sugrado.hrmsproject.entities.concretes.verifications.VerificationByEmployee;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
     @Override
     public Result add(JobAdvertisement jobAdvertisement) {
+        jobAdvertisement.setStatus(true);
         this.jobAdvertisementDao.save(jobAdvertisement);
         var verificationByEmployee =
                 new VerificationByEmployee(jobAdvertisement.getId(), VerificationTypeEnum.JobAdvertisement);

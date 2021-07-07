@@ -35,12 +35,12 @@ public class CitiesController {
         return this.cityService.add(city);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result update(@RequestBody City city) {
         return this.cityService.update(city);
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public Result delete(@RequestBody City city) {
         return this.cityService.delete(city);
     }
