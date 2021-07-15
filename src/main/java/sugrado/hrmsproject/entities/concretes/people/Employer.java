@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 import sugrado.hrmsproject.core.entities.User;
 import sugrado.hrmsproject.entities.concretes.jobAdvertisements.JobAdvertisement;
 
@@ -35,6 +36,13 @@ public class Employer extends User {
 	@NotBlank
 	@NotNull
 	private String phoneNumber;
+
+	@Column(name = "new_content")
+	//@Type(type = "json")
+	private String newContent;
+
+	@Column(name = "sent")
+	private boolean sent;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "employer")
