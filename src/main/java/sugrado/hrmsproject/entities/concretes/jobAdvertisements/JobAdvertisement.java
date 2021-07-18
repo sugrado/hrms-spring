@@ -1,8 +1,10 @@
 package sugrado.hrmsproject.entities.concretes.jobAdvertisements;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import sugrado.hrmsproject.entities.concretes.candidates.Favourite;
 import sugrado.hrmsproject.entities.concretes.people.Employer;
 import sugrado.hrmsproject.entities.concretes.types.City;
 import sugrado.hrmsproject.entities.concretes.types.EmploymentType;
@@ -11,6 +13,7 @@ import sugrado.hrmsproject.entities.concretes.verifications.VerificationByEmploy
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
@@ -62,4 +65,8 @@ public class JobAdvertisement {
     @ManyToOne()
     @JoinColumn(name = "employer_id")
     private Employer employer;
+
+    @OneToMany(mappedBy = "jobAdvertisement")
+    @JsonIgnore
+    private List<Favourite> favourites ;
 }

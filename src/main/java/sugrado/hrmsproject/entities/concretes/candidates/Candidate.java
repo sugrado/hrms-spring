@@ -46,4 +46,8 @@ public class Candidate extends User {
 	@OneToOne(mappedBy = "candidate")
 	@JsonIgnore
 	private CandidateCv candidateCv;
+
+	@OneToMany(mappedBy = "candidate")
+	@JsonIgnore
+	private List<Favourite> favourites ;
 }
