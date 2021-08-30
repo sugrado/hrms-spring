@@ -14,7 +14,11 @@ import java.util.Map;
 
 @Service
 public class CloudinaryManager implements CloudinaryService {
-    private Cloudinary cloudinary;
+    private final Cloudinary cloudinary;
+
+    public CloudinaryManager(Cloudinary cloudinary) {
+        this.cloudinary = cloudinary;
+    }
 
     @Override
     public DataResult<Map> uploadImage(MultipartFile file) {
