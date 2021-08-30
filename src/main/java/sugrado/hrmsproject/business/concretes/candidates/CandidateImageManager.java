@@ -29,8 +29,8 @@ public class CandidateImageManager implements CandidateImageService {
     }
 
     @Override
-    public Result add(int candidateId, MultipartFile file) {
-        var candidateCv = this.candidateCvService.getByCandidateId(candidateId);
+    public Result add(int candidateCvId, MultipartFile file) {
+        var candidateCv = this.candidateCvService.getById(candidateCvId);
 
         if (candidateCv.getData() == null)
             return new ErrorResult(Messages.notFound);

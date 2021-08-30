@@ -16,8 +16,8 @@ public class CandidateImagesController {
     }
 
     @PostMapping("/add")
-    public Result add(int candidateId, MultipartFile file) {
-        return this.candidateImageService.add(candidateId, file);
+    public Result add(int candidateCvId, MultipartFile file) {
+        return this.candidateImageService.add(candidateCvId, file);
     }
 
     @GetMapping("/getall")
