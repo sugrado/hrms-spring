@@ -1,10 +1,6 @@
 package sugrado.hrmsproject.business.concretes.types;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import sugrado.hrmsproject.business.abstracts.types.JobPositionService;
 import sugrado.hrmsproject.business.constants.Messages;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
@@ -14,11 +10,12 @@ import sugrado.hrmsproject.core.utilities.results.SuccessResult;
 import sugrado.hrmsproject.dataAccess.abstracts.types.JobPositionDao;
 import sugrado.hrmsproject.entities.concretes.types.JobPosition;
 
+import java.util.List;
+
 @Service
 public class JobPositionManager implements JobPositionService {
-    private JobPositionDao jobPositionDao;
+    private final JobPositionDao jobPositionDao;
 
-    @Autowired
     public JobPositionManager(JobPositionDao jobPositionDao) {
         super();
         this.jobPositionDao = jobPositionDao;

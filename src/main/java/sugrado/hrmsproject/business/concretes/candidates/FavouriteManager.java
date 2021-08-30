@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.business.concretes.candidates;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sugrado.hrmsproject.business.abstracts.candidates.FavouriteService;
 import sugrado.hrmsproject.business.constants.Messages;
@@ -12,9 +11,8 @@ import java.util.List;
 
 @Service
 public class FavouriteManager implements FavouriteService {
-    private FavouriteDao favouriteDao;
+    private final FavouriteDao favouriteDao;
 
-    @Autowired
     public FavouriteManager(FavouriteDao favouriteDao) {
         this.favouriteDao = favouriteDao;
     }

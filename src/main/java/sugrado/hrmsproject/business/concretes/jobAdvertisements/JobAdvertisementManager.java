@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.business.concretes.jobAdvertisements;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sugrado.hrmsproject.business.abstracts.jobAdvertisements.JobAdvertisementService;
@@ -15,17 +14,15 @@ import sugrado.hrmsproject.entities.concretes.jobAdvertisements.JobAdvertisement
 import sugrado.hrmsproject.entities.concretes.types.VerificationTypeEnum;
 import sugrado.hrmsproject.entities.concretes.verifications.VerificationByEmployee;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService {
 
-    private JobAdvertisementDao jobAdvertisementDao;
-    private VerificationByEmployeeService verificationByEmployeeService;
+    private final JobAdvertisementDao jobAdvertisementDao;
+    private final VerificationByEmployeeService verificationByEmployeeService;
 
-    @Autowired
     public JobAdvertisementManager(JobAdvertisementDao jobAdvertisementDao, VerificationByEmployeeService verificationByEmployeeService) {
         this.jobAdvertisementDao = jobAdvertisementDao;
         this.verificationByEmployeeService = verificationByEmployeeService;

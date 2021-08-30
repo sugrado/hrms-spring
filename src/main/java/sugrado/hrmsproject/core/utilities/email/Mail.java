@@ -1,17 +1,13 @@
 package sugrado.hrmsproject.core.utilities.email;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import sugrado.hrmsproject.business.abstracts.verifications.VerificationByCodeService;
-import sugrado.hrmsproject.business.constants.Messages;
 
 @Service
 public class Mail {
-    private JavaMailSender emailSender;
+    private final JavaMailSender emailSender;
 
-    @Autowired
     public Mail(JavaMailSender emailSender) {
         this.emailSender = emailSender;
     }

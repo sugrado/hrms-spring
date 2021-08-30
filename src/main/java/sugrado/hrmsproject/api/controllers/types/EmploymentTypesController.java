@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.api.controllers.types;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sugrado.hrmsproject.business.abstracts.types.EmploymentTypeService;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
@@ -13,9 +12,8 @@ import java.util.List;
 @RequestMapping("/api/employmenttypes")
 @CrossOrigin
 public class EmploymentTypesController {
-    private EmploymentTypeService employmentTypeService;
+    private final EmploymentTypeService employmentTypeService;
 
-    @Autowired
     public EmploymentTypesController(EmploymentTypeService employmentTypeService) {
         this.employmentTypeService = employmentTypeService;
     }

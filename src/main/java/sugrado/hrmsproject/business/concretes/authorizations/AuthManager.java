@@ -1,7 +1,6 @@
 package sugrado.hrmsproject.business.concretes.authorizations;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sugrado.hrmsproject.business.abstracts.authorizations.AuthService;
 import sugrado.hrmsproject.business.abstracts.authorizations.UserService;
@@ -29,16 +28,15 @@ import sugrado.hrmsproject.entities.dtos.EmployerForRegisterDto;
 @Service
 public class AuthManager implements AuthService {
 
-    private UserService userService;
-    private CandidateService candidateService;
-    private EmployerService employerService;
-    private MernisService mernisService;
-    private VerificationByCodeService verificationByCodeService;
-    private VerificationByEmployeeService verificationByEmployeeService;
-    private ModelMapper mapper;
-    private Mail mail;
+    private final UserService userService;
+    private final CandidateService candidateService;
+    private final EmployerService employerService;
+    private final MernisService mernisService;
+    private final VerificationByCodeService verificationByCodeService;
+    private final VerificationByEmployeeService verificationByEmployeeService;
+    private final ModelMapper mapper;
+    private final Mail mail;
 
-    @Autowired
     public AuthManager(UserService userService,
                        CandidateService candidateService,
                        EmployerService employerService,

@@ -1,32 +1,28 @@
 package sugrado.hrmsproject.business.concretes.people;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import sugrado.hrmsproject.business.abstracts.people.EmployerService;
 import sugrado.hrmsproject.business.constants.Messages;
 import sugrado.hrmsproject.core.utilities.results.*;
 import sugrado.hrmsproject.dataAccess.abstracts.people.EmployerDao;
-import sugrado.hrmsproject.entities.concretes.jobAdvertisements.JobAdvertisement;
 import sugrado.hrmsproject.entities.concretes.people.Employer;
 import sugrado.hrmsproject.entities.dtos.CompareEmployerInfoDto;
 import sugrado.hrmsproject.entities.dtos.EmployerUpdateRequestDto;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class EmployerManager implements EmployerService {
 
-    private EmployerDao employerDao;
-    private ObjectMapper objectMapper;
-    private ModelMapper modelMapper;
+    private final EmployerDao employerDao;
+    private final ObjectMapper objectMapper;
+    private final ModelMapper modelMapper;
 
-    @Autowired
     public EmployerManager(EmployerDao employerDao, ObjectMapper objectMapper, ModelMapper modelMapper) {
         super();
         this.employerDao = employerDao;

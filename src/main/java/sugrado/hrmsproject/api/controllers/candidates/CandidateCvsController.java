@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.api.controllers.candidates;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sugrado.hrmsproject.business.abstracts.candidates.CandidateCvService;
 import sugrado.hrmsproject.core.utilities.results.Result;
@@ -10,9 +9,8 @@ import sugrado.hrmsproject.entities.concretes.candidates.CandidateCv;
 @RequestMapping("/api/candidatecvs")
 @CrossOrigin
 public class CandidateCvsController {
-    private CandidateCvService candidateCvService;
+    private final CandidateCvService candidateCvService;
 
-    @Autowired
     public CandidateCvsController(CandidateCvService candidateCvService) {
         super();
         this.candidateCvService = candidateCvService;

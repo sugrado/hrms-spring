@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.api.controllers.candidates;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sugrado.hrmsproject.business.abstracts.candidates.FavouriteService;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
@@ -13,9 +12,8 @@ import java.util.List;
 @RequestMapping("/api/favourites")
 @CrossOrigin
 public class FavouritesController {
-    private FavouriteService favouriteService;
+    private final FavouriteService favouriteService;
 
-    @Autowired
     public FavouritesController(FavouriteService favouriteService) {
         this.favouriteService = favouriteService;
     }

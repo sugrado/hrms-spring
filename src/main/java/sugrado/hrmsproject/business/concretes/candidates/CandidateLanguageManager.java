@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.business.concretes.candidates;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sugrado.hrmsproject.business.abstracts.candidates.CandidateLanguageService;
 import sugrado.hrmsproject.business.constants.Messages;
@@ -15,9 +14,8 @@ import java.util.List;
 
 @Service
 public class CandidateLanguageManager implements CandidateLanguageService {
-    private CandidateLanguageDao candidateLanguageDao;
+    private final CandidateLanguageDao candidateLanguageDao;
 
-    @Autowired
     public CandidateLanguageManager(CandidateLanguageDao candidateLanguageDao) {
         this.candidateLanguageDao = candidateLanguageDao;
     }

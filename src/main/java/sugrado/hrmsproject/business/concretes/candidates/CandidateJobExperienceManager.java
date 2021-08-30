@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.business.concretes.candidates;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sugrado.hrmsproject.business.abstracts.candidates.CandidateJobExperienceService;
 import sugrado.hrmsproject.business.constants.Messages;
@@ -15,9 +14,8 @@ import java.util.List;
 
 @Service
 public class CandidateJobExperienceManager implements CandidateJobExperienceService {
-    private CandidateJobExperienceDao candidateJobExperienceDao;
+    private final CandidateJobExperienceDao candidateJobExperienceDao;
 
-    @Autowired
     public CandidateJobExperienceManager(CandidateJobExperienceDao candidateJobExperienceDao) {
         this.candidateJobExperienceDao = candidateJobExperienceDao;
     }

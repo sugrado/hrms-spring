@@ -1,10 +1,6 @@
 package sugrado.hrmsproject.business.concretes.verifications;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import sugrado.hrmsproject.business.abstracts.verifications.VerificationService;
 import sugrado.hrmsproject.business.constants.Messages;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
@@ -14,12 +10,13 @@ import sugrado.hrmsproject.core.utilities.results.SuccessResult;
 import sugrado.hrmsproject.dataAccess.abstracts.verifications.VerificationDao;
 import sugrado.hrmsproject.entities.concretes.verifications.Verification;
 
+import java.util.List;
+
 @Service
 public class VerificationManager implements VerificationService {
 
-    private VerificationDao verificatinoDao;
+    private final VerificationDao verificatinoDao;
 
-    @Autowired
     public VerificationManager(VerificationDao verificatinoDao) {
         super();
         this.verificatinoDao = verificatinoDao;

@@ -1,11 +1,7 @@
 package sugrado.hrmsproject.api.controllers.people;
 
-import java.util.List;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import sugrado.hrmsproject.business.abstracts.people.EmployerService;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
@@ -13,13 +9,14 @@ import sugrado.hrmsproject.entities.concretes.people.Employer;
 import sugrado.hrmsproject.entities.dtos.CompareEmployerInfoDto;
 import sugrado.hrmsproject.entities.dtos.EmployerUpdateRequestDto;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/employers")
 @CrossOrigin
 public class EmployersController {
-    private EmployerService employerService;
+    private final EmployerService employerService;
 
-    @Autowired
     public EmployersController(EmployerService employerService) {
         super();
         this.employerService = employerService;

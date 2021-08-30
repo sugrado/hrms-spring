@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.api.controllers.candidates;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sugrado.hrmsproject.business.abstracts.candidates.CandidateLanguageService;
 import sugrado.hrmsproject.core.utilities.results.Result;
@@ -10,9 +9,8 @@ import sugrado.hrmsproject.entities.concretes.candidates.CandidateLanguage;
 @RequestMapping("/api/candidatelanguages")
 @CrossOrigin
 public class CandidateLanguagesController {
-    private CandidateLanguageService candidateLanguageService;
+    private final CandidateLanguageService candidateLanguageService;
 
-    @Autowired
     public CandidateLanguagesController(CandidateLanguageService candidateLanguageService) {
         super();
         this.candidateLanguageService = candidateLanguageService;

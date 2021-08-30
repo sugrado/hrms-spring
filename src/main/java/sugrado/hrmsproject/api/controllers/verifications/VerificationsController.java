@@ -1,22 +1,19 @@
 package sugrado.hrmsproject.api.controllers.verifications;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import sugrado.hrmsproject.business.abstracts.verifications.VerificationService;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
 import sugrado.hrmsproject.entities.concretes.verifications.Verification;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/verifications")
 @CrossOrigin
 public class VerificationsController {
-    private VerificationService verificationService;
+    private final VerificationService verificationService;
 
-    @Autowired
     public VerificationsController(VerificationService verificationService) {
         super();
         this.verificationService = verificationService;

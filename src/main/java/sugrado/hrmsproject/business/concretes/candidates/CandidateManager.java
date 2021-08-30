@@ -1,22 +1,22 @@
 package sugrado.hrmsproject.business.concretes.candidates;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import sugrado.hrmsproject.business.abstracts.candidates.CandidateService;
 import sugrado.hrmsproject.business.constants.Messages;
-import sugrado.hrmsproject.core.utilities.results.*;
+import sugrado.hrmsproject.core.utilities.results.DataResult;
+import sugrado.hrmsproject.core.utilities.results.Result;
+import sugrado.hrmsproject.core.utilities.results.SuccessDataResult;
+import sugrado.hrmsproject.core.utilities.results.SuccessResult;
 import sugrado.hrmsproject.dataAccess.abstracts.candidates.CandidateDao;
 import sugrado.hrmsproject.entities.concretes.candidates.Candidate;
+
+import java.util.List;
 
 @Service
 public class CandidateManager implements CandidateService {
 
-    private CandidateDao candidateDao;
+    private final CandidateDao candidateDao;
 
-    @Autowired
     public CandidateManager(CandidateDao candidateDao) {
         super();
         this.candidateDao = candidateDao;

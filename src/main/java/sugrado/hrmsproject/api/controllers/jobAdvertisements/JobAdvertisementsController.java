@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.api.controllers.jobAdvertisements;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sugrado.hrmsproject.business.abstracts.jobAdvertisements.JobAdvertisementService;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
@@ -13,9 +12,8 @@ import java.util.List;
 @RequestMapping("/api/jobadvertisements")
 @CrossOrigin
 public class JobAdvertisementsController {
-    private JobAdvertisementService jobAdvertisementService;
+    private final JobAdvertisementService jobAdvertisementService;
 
-    @Autowired
     public JobAdvertisementsController(JobAdvertisementService jobAdvertisementService) {
         this.jobAdvertisementService = jobAdvertisementService;
     }

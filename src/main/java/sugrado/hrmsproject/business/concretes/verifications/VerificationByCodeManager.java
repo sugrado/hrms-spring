@@ -1,11 +1,6 @@
 package sugrado.hrmsproject.business.concretes.verifications;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import sugrado.hrmsproject.business.abstracts.verifications.VerificationByCodeService;
 import sugrado.hrmsproject.business.constants.Messages;
 import sugrado.hrmsproject.core.utilities.business.BusinessRules;
@@ -13,12 +8,14 @@ import sugrado.hrmsproject.core.utilities.results.*;
 import sugrado.hrmsproject.dataAccess.abstracts.verifications.VerificationByCodeDao;
 import sugrado.hrmsproject.entities.concretes.verifications.VerificationByCode;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Service
 public class VerificationByCodeManager implements VerificationByCodeService {
 
-    private VerificationByCodeDao verificationByCodeDao;
+    private final VerificationByCodeDao verificationByCodeDao;
 
-    @Autowired
     public VerificationByCodeManager(VerificationByCodeDao verificationByCodeDao) {
         super();
         this.verificationByCodeDao = verificationByCodeDao;
@@ -47,7 +44,7 @@ public class VerificationByCodeManager implements VerificationByCodeService {
 
         var result = BusinessRules.run(
                 this.checkVerificationCode(codeForValidate.getCode(), verificationByCode.getCode()));
-        if(result != null)
+        if (result != null)
             return result;
 
         codeForValidate.setStatus(true);
@@ -68,8 +65,8 @@ public class VerificationByCodeManager implements VerificationByCodeService {
                 (this.verificationByCodeDao.getByUserId(userId), Messages.listed);
     }
 
-    private Result checkVerificationCode(String trueCode, String inComingCode){
-        if(inComingCode.equals(trueCode))
+    private Result checkVerificationCode(String trueCode, String inComingCode) {
+        if (inComingCode.equals(trueCode))
             return new SuccessResult();
         return new ErrorResult("Verification code does not match.");
     }

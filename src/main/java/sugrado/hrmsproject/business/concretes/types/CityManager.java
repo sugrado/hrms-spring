@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.business.concretes.types;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sugrado.hrmsproject.business.abstracts.types.CityService;
 import sugrado.hrmsproject.business.constants.Messages;
@@ -15,9 +14,8 @@ import java.util.List;
 
 @Service
 public class CityManager implements CityService {
-    private CityDao cityDao;
+    private final CityDao cityDao;
 
-    @Autowired
     public CityManager(CityDao cityDao) {
         this.cityDao = cityDao;
     }

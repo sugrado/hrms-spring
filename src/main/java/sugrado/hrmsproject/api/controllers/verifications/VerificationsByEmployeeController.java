@@ -1,8 +1,6 @@
 package sugrado.hrmsproject.api.controllers.verifications;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import sugrado.hrmsproject.business.abstracts.verifications.VerificationByEmployeeService;
 import sugrado.hrmsproject.core.utilities.results.Result;
 import sugrado.hrmsproject.entities.concretes.verifications.VerificationByEmployee;
@@ -11,9 +9,8 @@ import sugrado.hrmsproject.entities.concretes.verifications.VerificationByEmploy
 @RequestMapping("/api/verificationsbyemployee")
 @CrossOrigin
 public class VerificationsByEmployeeController {
-    private VerificationByEmployeeService verificationByEmployeeService;
+    private final VerificationByEmployeeService verificationByEmployeeService;
 
-    @Autowired
     public VerificationsByEmployeeController(VerificationByEmployeeService verificationByEmployeeService) {
         super();
         this.verificationByEmployeeService = verificationByEmployeeService;

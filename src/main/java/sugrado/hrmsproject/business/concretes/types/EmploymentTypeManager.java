@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.business.concretes.types;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sugrado.hrmsproject.business.abstracts.types.EmploymentTypeService;
 import sugrado.hrmsproject.business.constants.Messages;
@@ -15,9 +14,8 @@ import java.util.List;
 
 @Service
 public class EmploymentTypeManager implements EmploymentTypeService {
-    private EmploymentTypeDao employmentTypeDao;
+    private final EmploymentTypeDao employmentTypeDao;
 
-    @Autowired
     public EmploymentTypeManager(EmploymentTypeDao employmentTypeDao) {
         this.employmentTypeDao = employmentTypeDao;
     }

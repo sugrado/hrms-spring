@@ -14,7 +14,6 @@ import java.util.Map;
 
 @Service
 public class CloudinaryManager implements CloudinaryService {
-    @Autowired
     private Cloudinary cloudinary;
 
     @Override

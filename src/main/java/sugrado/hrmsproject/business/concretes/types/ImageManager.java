@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.business.concretes.types;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import sugrado.hrmsproject.business.abstracts.authorizations.UserService;
@@ -15,10 +14,9 @@ import java.util.Map;
 
 @Service
 public class ImageManager implements ImageService {
-    private UserService userService;
-    private CloudinaryService cloudinaryService;
+    private final UserService userService;
+    private final CloudinaryService cloudinaryService;
 
-    @Autowired
     public ImageManager(CloudinaryService cloudinaryService, UserService userService) {
         this.cloudinaryService = cloudinaryService;
         this.userService = userService;

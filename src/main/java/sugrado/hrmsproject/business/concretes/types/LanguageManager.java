@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.business.concretes.types;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sugrado.hrmsproject.business.abstracts.types.LanguageService;
 import sugrado.hrmsproject.business.constants.Messages;
@@ -15,9 +14,8 @@ import java.util.List;
 
 @Service
 public class LanguageManager implements LanguageService {
-    private LanguageDao languageDao;
+    private final LanguageDao languageDao;
 
-    @Autowired
     public LanguageManager(LanguageDao languageDao) {
         this.languageDao = languageDao;
     }

@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.api.controllers.candidates;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sugrado.hrmsproject.business.abstracts.candidates.CandidateEducationService;
 import sugrado.hrmsproject.core.utilities.results.Result;
@@ -10,9 +9,8 @@ import sugrado.hrmsproject.entities.concretes.candidates.CandidateEducation;
 @RequestMapping("/api/candidateeducations")
 @CrossOrigin
 public class CandidateEducationsController {
-    private CandidateEducationService candidateEducationService;
+    private final CandidateEducationService candidateEducationService;
 
-    @Autowired
     public CandidateEducationsController(CandidateEducationService candidateEducationService) {
         super();
         this.candidateEducationService = candidateEducationService;

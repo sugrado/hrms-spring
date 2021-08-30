@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.api.controllers.types;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sugrado.hrmsproject.business.abstracts.types.LanguageService;
 import sugrado.hrmsproject.core.utilities.results.Result;
@@ -10,9 +9,8 @@ import sugrado.hrmsproject.entities.concretes.types.Language;
 @RequestMapping("/api/languages")
 @CrossOrigin
 public class LanguagesController {
-    private LanguageService languageService;
+    private final LanguageService languageService;
 
-    @Autowired
     public LanguagesController(LanguageService languageService) {
         super();
         this.languageService = languageService;

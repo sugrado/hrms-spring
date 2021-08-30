@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.business.concretes.candidates;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sugrado.hrmsproject.business.abstracts.candidates.*;
 import sugrado.hrmsproject.business.constants.Messages;
@@ -16,14 +15,13 @@ import java.util.List;
 
 @Service
 public class CandidateCvManager implements CandidateCvService {
-    private CandidateCvDao candidateCvDao;
-    private CandidateService candidateService;
-    private CandidateImageService candidateImageService;
-    private CandidateEducationService candidateEducationService;
-    private CandidateJobExperienceService candidateJobExperienceService;
-    private CandidateLanguageService candidateLanguageService;
+    private final CandidateCvDao candidateCvDao;
+    private final CandidateService candidateService;
+    private final CandidateImageService candidateImageService;
+    private final CandidateEducationService candidateEducationService;
+    private final CandidateJobExperienceService candidateJobExperienceService;
+    private final CandidateLanguageService candidateLanguageService;
 
-    @Autowired
     public CandidateCvManager(CandidateCvDao candidateCvDao,
                               CandidateService candidateService,
                               CandidateImageService candidateImageService,

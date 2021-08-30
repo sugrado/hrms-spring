@@ -1,6 +1,5 @@
 package sugrado.hrmsproject.api.controllers.types;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sugrado.hrmsproject.business.abstracts.types.CityService;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
@@ -13,9 +12,8 @@ import java.util.List;
 @RequestMapping("/api/cities")
 @CrossOrigin
 public class CitiesController {
-    private CityService cityService;
+    private final CityService cityService;
 
-    @Autowired
     public CitiesController(CityService cityService) {
         this.cityService = cityService;
     }
