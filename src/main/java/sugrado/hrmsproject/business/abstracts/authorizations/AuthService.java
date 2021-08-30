@@ -5,7 +5,9 @@ import sugrado.hrmsproject.entities.dtos.CandidateForRegisterDto;
 import sugrado.hrmsproject.entities.dtos.EmployerForRegisterDto;
 
 public interface AuthService {
-	Result registerCandidate(CandidateForRegisterDto candidateForRegisterDto);
-	Result registerEmployer(EmployerForRegisterDto employerForRegisterDto);
+    Result registerCandidate(CandidateForRegisterDto candidateForRegisterDto);
+
+    Result registerEmployer(EmployerForRegisterDto employerForRegisterDto);
+
     Result userExist(String email, String identificationNumber);
 }

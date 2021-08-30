@@ -1,19 +1,19 @@
 package sugrado.hrmsproject.business.abstracts.verifications;
 
-import java.util.List;
-
 import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
 import sugrado.hrmsproject.entities.concretes.verifications.Verification;
 
+import java.util.List;
+
 public interface VerificationService {
-	DataResult<List<Verification>> getAll();
+    DataResult<List<Verification>> getAll();
 
-	DataResult<Verification> getById(int verificationId);
+    DataResult<Verification> getById(int verificationId);
 
-	Result add(Verification verification);
+    Result add(Verification verification);
 
-	Result update(Verification verification);
+    Result update(Verification verification);
 
-	Result delete(Verification verification);
+    Result delete(Verification verification);
 }

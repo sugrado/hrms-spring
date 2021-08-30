@@ -18,8 +18,7 @@ public class MernisManager implements MernisService {
                     citizen.getFirstName(),
                     citizen.getLastName(),
                     citizen.getBirthDate().getYear());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;

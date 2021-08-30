@@ -1,10 +1,13 @@
 package sugrado.hrmsproject.entities.concretes.verifications;
 
-import javax.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Data
 @Entity
@@ -12,11 +15,11 @@ import lombok.NoArgsConstructor;
 @PrimaryKeyJoinColumn(name = "id")
 @AllArgsConstructor
 @NoArgsConstructor
-public class VerificationByCode extends  Verification{
+public class VerificationByCode extends Verification {
 
-	@Column(name = "user_id")
-	private int userId;
+    @Column(name = "user_id")
+    private int userId;
 
-	@Column(name = "code")
-	private String code;
+    @Column(name = "code")
+    private String code;
 }

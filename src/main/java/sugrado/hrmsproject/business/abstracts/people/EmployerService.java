@@ -1,13 +1,13 @@
 package sugrado.hrmsproject.business.abstracts.people;
 
-import java.util.List;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
 import sugrado.hrmsproject.entities.concretes.people.Employer;
 import sugrado.hrmsproject.entities.dtos.CompareEmployerInfoDto;
 import sugrado.hrmsproject.entities.dtos.EmployerUpdateRequestDto;
+
+import java.util.List;
 
 public interface EmployerService {
     DataResult<List<Employer>> getAll();

@@ -21,20 +21,16 @@ import java.io.IOException;
 import java.util.UUID;
 
 
-public class QNQMarshalGuid implements Marshal
-{
-    public java.lang.Object readInstance(XmlPullParser parser, java.lang.String namespace, java.lang.String name,PropertyInfo expected) throws IOException, XmlPullParserException
-    {
+public class QNQMarshalGuid implements Marshal {
+    public java.lang.Object readInstance(XmlPullParser parser, java.lang.String namespace, java.lang.String name, PropertyInfo expected) throws IOException, XmlPullParserException {
         return UUID.fromString(parser.nextText());
     }
 
-    public void register(SoapSerializationEnvelope cm)
-    {
+    public void register(SoapSerializationEnvelope cm) {
         cm.addMapping(cm.xsd, "guid", UUID.class, this);
     }
 
-    public void writeInstance(XmlSerializer writer, java.lang.Object obj) throws IOException
-    {
+    public void writeInstance(XmlSerializer writer, java.lang.Object obj) throws IOException {
         writer.text(obj.toString());
     }
 }

@@ -6,5 +6,5 @@ import sugrado.hrmsproject.entities.concretes.people.Employer;
 @Data
 public class CompareEmployerInfoDto {
     private Employer oldContent;
-    private  Employer newContent;
+    private Employer newContent;
 }

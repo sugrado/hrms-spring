@@ -1,13 +1,13 @@
 package sugrado.hrmsproject.business.constants;
 
 public class Messages {
-	public static String added = "Added.";
+    public static String added = "Added.";
     public static String deleted = "Deleted.";
     public static String listed = "Listed.";
     public static String updated = "Updated.";
     public static String userExist = "User already exist.";
     public static String userNotExist = "User does not exist.";
-    public static String notFound="Entity not found.";
+    public static String notFound = "Entity not found.";
 
     public static String candidateRegistered = "Candidate successfully registered.";
     public static String candidateNotRegistered = "Candidate not registered.";

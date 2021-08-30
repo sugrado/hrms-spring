@@ -2,7 +2,6 @@ package sugrado.hrmsproject.business.abstracts.candidates;
 
 import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
-import sugrado.hrmsproject.entities.concretes.candidates.CandidateEducation;
 import sugrado.hrmsproject.entities.concretes.candidates.CandidateJobExperience;
 
 import java.util.List;

@@ -12,16 +12,16 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="candidate_cvs")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidateEducations","candidateJobExperiences", "candidateLanguages", "candidateImage"})
+@Table(name = "candidate_cvs")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "candidateEducations", "candidateJobExperiences", "candidateLanguages", "candidateImage"})
 public class CandidateCv {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private int id;
 
     @OneToOne
-    @JoinColumn(name="candidate_id")
+    @JoinColumn(name = "candidate_id")
     @JsonIgnoreProperties({"password", "identificationNumber"})
     private Candidate candidate;
 

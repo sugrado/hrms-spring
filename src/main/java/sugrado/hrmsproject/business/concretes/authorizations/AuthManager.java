@@ -8,9 +8,9 @@ import sugrado.hrmsproject.business.abstracts.candidates.CandidateService;
 import sugrado.hrmsproject.business.abstracts.people.EmployerService;
 import sugrado.hrmsproject.business.abstracts.verifications.VerificationByCodeService;
 import sugrado.hrmsproject.business.abstracts.verifications.VerificationByEmployeeService;
-import sugrado.hrmsproject.business.constants.Messages;
 import sugrado.hrmsproject.business.adapters.kpsAdapter.MernisService;
 import sugrado.hrmsproject.business.adapters.kpsAdapter.dto.CitizenCard;
+import sugrado.hrmsproject.business.constants.Messages;
 import sugrado.hrmsproject.core.utilities.business.BusinessRules;
 import sugrado.hrmsproject.core.utilities.email.Mail;
 import sugrado.hrmsproject.core.utilities.email.StringGenerator;
@@ -19,9 +19,9 @@ import sugrado.hrmsproject.core.utilities.results.Result;
 import sugrado.hrmsproject.core.utilities.results.SuccessResult;
 import sugrado.hrmsproject.entities.concretes.candidates.Candidate;
 import sugrado.hrmsproject.entities.concretes.people.Employer;
+import sugrado.hrmsproject.entities.concretes.types.VerificationTypeEnum;
 import sugrado.hrmsproject.entities.concretes.verifications.VerificationByCode;
 import sugrado.hrmsproject.entities.concretes.verifications.VerificationByEmployee;
-import sugrado.hrmsproject.entities.concretes.types.VerificationTypeEnum;
 import sugrado.hrmsproject.entities.dtos.CandidateForRegisterDto;
 import sugrado.hrmsproject.entities.dtos.EmployerForRegisterDto;
 
@@ -59,10 +59,10 @@ public class AuthManager implements AuthService {
     public Result registerCandidate(CandidateForRegisterDto candidateForRegisterDto) {
         var citizen = this.mapper.map(candidateForRegisterDto, CitizenCard.class);
         var result = BusinessRules.run(this.userExist(candidateForRegisterDto.getEmailAddress(),
-                                                         candidateForRegisterDto.getIdentificationNumber()),
-                                          this.isPasswordMatch(candidateForRegisterDto.getPassword(),
-                                                               candidateForRegisterDto.getPasswordConfirm()),
-                                          this.checkIfValidCitizen(citizen));
+                        candidateForRegisterDto.getIdentificationNumber()),
+                this.isPasswordMatch(candidateForRegisterDto.getPassword(),
+                        candidateForRegisterDto.getPasswordConfirm()),
+                this.checkIfValidCitizen(citizen));
 
         if (result != null) {
             return result;
@@ -84,10 +84,10 @@ public class AuthManager implements AuthService {
 
     @Override
     public Result registerEmployer(EmployerForRegisterDto employerForRegisterDto) {
-        var result = BusinessRules.run(this.userExist(employerForRegisterDto.getEmailAddress(),null),
-                                          this.isPasswordMatch(employerForRegisterDto.getPassword(),
-                                                               employerForRegisterDto.getPasswordConfirm()),
-                                          this.checkEmailMatch(employerForRegisterDto));
+        var result = BusinessRules.run(this.userExist(employerForRegisterDto.getEmailAddress(), null),
+                this.isPasswordMatch(employerForRegisterDto.getPassword(),
+                        employerForRegisterDto.getPasswordConfirm()),
+                this.checkEmailMatch(employerForRegisterDto));
 
         if (result != null) {
             return result;

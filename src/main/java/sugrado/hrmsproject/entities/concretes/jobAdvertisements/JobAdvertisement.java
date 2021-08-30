@@ -9,7 +9,6 @@ import sugrado.hrmsproject.entities.concretes.people.Employer;
 import sugrado.hrmsproject.entities.concretes.types.City;
 import sugrado.hrmsproject.entities.concretes.types.EmploymentType;
 import sugrado.hrmsproject.entities.concretes.types.JobPosition;
-import sugrado.hrmsproject.entities.concretes.verifications.VerificationByEmployee;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -68,5 +67,5 @@ public class JobAdvertisement {
 
     @OneToMany(mappedBy = "jobAdvertisement")
     @JsonIgnore
-    private List<Favourite> favourites ;
+    private List<Favourite> favourites;
 }

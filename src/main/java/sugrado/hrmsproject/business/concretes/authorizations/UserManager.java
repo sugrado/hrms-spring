@@ -1,17 +1,16 @@
 package sugrado.hrmsproject.business.concretes.authorizations;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
-
 import sugrado.hrmsproject.business.abstracts.authorizations.UserService;
 import sugrado.hrmsproject.business.constants.Messages;
+import sugrado.hrmsproject.core.dataAccess.UserDao;
+import sugrado.hrmsproject.core.entities.User;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
 import sugrado.hrmsproject.core.utilities.results.SuccessDataResult;
 import sugrado.hrmsproject.core.utilities.results.SuccessResult;
-import sugrado.hrmsproject.core.dataAccess.UserDao;
-import sugrado.hrmsproject.core.entities.User;
+
+import java.util.List;
 
 @Service
 public class UserManager implements UserService {
@@ -52,8 +51,7 @@ public class UserManager implements UserService {
     }
 
     @Override
-    public DataResult<User> getByMail(String email)
-    {
+    public DataResult<User> getByMail(String email) {
         return new SuccessDataResult<User>(this.userDao.findByEmailAddress(email));
     }
 }

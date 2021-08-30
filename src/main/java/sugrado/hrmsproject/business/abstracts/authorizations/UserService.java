@@ -1,10 +1,10 @@
 package sugrado.hrmsproject.business.abstracts.authorizations;
 
-import java.util.List;
-
+import sugrado.hrmsproject.core.entities.User;
 import sugrado.hrmsproject.core.utilities.results.DataResult;
 import sugrado.hrmsproject.core.utilities.results.Result;
-import sugrado.hrmsproject.core.entities.User;
+
+import java.util.List;
 
 public interface UserService {
     DataResult<List<User>> getAll();

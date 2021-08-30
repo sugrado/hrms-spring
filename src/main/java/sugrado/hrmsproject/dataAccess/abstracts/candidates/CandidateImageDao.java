@@ -5,5 +5,6 @@ import sugrado.hrmsproject.entities.concretes.candidates.CandidateImage;
 
 public interface CandidateImageDao extends JpaRepository<CandidateImage, Integer> {
     CandidateImage getById(int imageId);
+
     CandidateImage getByCandidateCvId(int candidateCvId);
 }
